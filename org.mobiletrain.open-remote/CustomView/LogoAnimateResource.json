@@ -1,0 +1,215 @@
+{
+    "circles": [
+        {
+            "center": {
+                "X": 0.18,
+                "Y": -0.088
+            },
+            "clockwised": false,
+            "endAngle": 3.75,
+            "lineWidth": 0.027,
+            "radius": 0.027,
+            "startAngle": 1.75,
+            "fillColor": "ff2700",
+            "strokeColor": "00000000"
+        },
+        {
+            "center": {
+                "X": 0.18,
+                "Y": -0.088
+            },
+            "clockwised": false,
+            "endAngle": 3.75,
+            "lineWidth": 0.027,
+            "radius": 0.082,
+            "startAngle": 1.75,
+            "strokeColor": "ff3a00"
+        },
+        {
+            "center": {
+                "X": 0.18,
+                "Y": -0.088
+            },
+            "clockwised": false,
+            "endAngle": 3.739,
+            "lineWidth": 0.027,
+            "radius": 0.137,
+            "startAngle": 1.761,
+            "strokeColor": "ff4e00"
+        },
+        {
+            "center": {
+                "X": 0.18,
+                "Y": -0.088
+            },
+            "clockwised": false,
+            "endAngle": 3.65,
+            "lineWidth": 0.027,
+            "radius": 0.191,
+            "startAngle": 1.85,
+            "strokeColor": "ff3a00"
+        },
+        {
+            "center": {
+                "X": 0.18,
+                "Y": -0.088
+            },
+            "clockwised": false,
+            "endAngle": 3.561,
+            "lineWidth": 0.027,
+            "radius": 0.246,
+            "startAngle": 1.939,
+            "strokeColor": "ff4e00"
+        },
+        {
+            "center": {
+                "X": 0.18,
+                "Y": -0.088
+            },
+            "clockwised": false,
+            "endAngle": 3.472,
+            "lineWidth": 0.027,
+            "radius": 0.301,
+            "startAngle": 2.028,
+            "strokeColor": "ff6200"
+        },
+        {
+            "center": {
+                "X": 0.18,
+                "Y": -0.088
+            },
+            "clockwised": false,
+            "endAngle": 3.383,
+            "lineWidth": 0.027,
+            "radius": 0.355,
+            "startAngle": 2.117,
+            "strokeColor": "ff7500"
+        },
+        {
+            "center": {
+                "X": 0.18,
+                "Y": -0.088
+            },
+            "clockwised": false,
+            "endAngle": 3.294,
+            "lineWidth": 0.027,
+            "radius": 0.41,
+            "startAngle": 2.206,
+            "strokeColor": "ff8900"
+        },
+        {
+            "center": {
+                "X": 0.18,
+                "Y": -0.088
+            },
+            "clockwised": false,
+            "endAngle": 3.206,
+            "lineWidth": 0.027,
+            "radius": 0.465,
+            "startAngle": 2.294,
+            "strokeColor": "ff9c00"
+        },
+        {
+            "center": {
+                "X": 0.18,
+                "Y": -0.088
+            },
+            "clockwised": false,
+            "endAngle": 3.117,
+            "lineWidth": 0.027,
+            "radius": 0.52,
+            "startAngle": 2.383,
+            "strokeColor": "ffb000"
+        },
+        {
+            "center": {
+                "X": 0.18,
+                "Y": -0.088
+            },
+            "clockwised": false,
+            "endAngle": 3.028,
+            "lineWidth": 0.027,
+            "radius": 0.574,
+            "startAngle": 2.472,
+            "strokeColor": "ffc400"
+        },
+        {
+            "center": {
+                "X": 0.18,
+                "Y": -0.088
+            },
+            "clockwised": false,
+            "endAngle": 2.939,
+            "lineWidth": 0.027,
+            "radius": 0.629,
+            "startAngle": 2.561,
+            "strokeColor": "ffd700"
+        },
+        {
+            "center": {
+                "X": 0.18,
+                "Y": -0.088
+            },
+            "clockwised": false,
+            "endAngle": 2.85,
+            "lineWidth": 0.027,
+            "radius": 0.684,
+            "startAngle": 2.65,
+            "strokeColor": "ffeb00"
+        }
+    ],
+    "points": [
+        {
+            "X": -0.111,
+            "Y": 0.703
+        },
+        {
+            "X": -0.119,
+            "Y": 0.703
+        },
+        {
+            "X": -0.746,
+            "Y": 0.703
+        },
+        {
+            "X": -0.746,
+            "Y": -0.15
+        },
+        {
+            "X": 0,
+            "Y": -0.801
+        },
+        {
+            "X": 0.348,
+            "Y": -0.49
+        },
+        {
+            "X": 0.348,
+            "Y": -0.619
+        },
+        {
+            "X": 0.555,
+            "Y": -0.619
+        },
+        {
+            "X": 0.555,
+            "Y": -0.316
+        },
+        {
+            "X": 0.746,
+            "Y": -0.15
+        },
+        {
+            "X": 0.746,
+            "Y": 0.703
+        },
+        {
+            "X": 0.18,
+            "Y": 0.703
+        },
+        {
+            "X": 0.18,
+            "Y": -0.088
+        }
+    ]
+}
