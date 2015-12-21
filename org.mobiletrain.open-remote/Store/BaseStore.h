@@ -8,6 +8,7 @@
 /// @brief 网络组件请求成功，但服务器返回失败
 FOUNDATION_EXPORT NSString *const ResponseErrorDomain;
 FOUNDATION_EXPORT NSInteger const ResponseErrorCode;
+FOUNDATION_EXPORT NSString *const URLString;
 
 /**
  * @class BaseStore

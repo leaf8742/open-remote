@@ -25,6 +25,9 @@ PODS:
   - JSONModel (1.1.0)
   - KVOController (1.0.3)
   - MagicalRecord (2.3.0)
+  - Mantle (2.0.6):
+    - Mantle/extobjc (= 2.0.6)
+  - Mantle/extobjc (2.0.6)
   - pop (1.0.8)
   - RESideMenu (4.0.7)
   - SDWebImage (3.7.3):
@@ -33,12 +36,13 @@ PODS:
   - SVProgressHUD (1.1.3)
 
 DEPENDENCIES:
-  - AFNetworking (= 2.5.4)
+  - AFNetworking
   - HexColors
   - IQKeyboardManager
   - JSONModel
   - KVOController
   - MagicalRecord
+  - Mantle
   - pop
   - RESideMenu
   - SDWebImage
@@ -51,6 +55,7 @@ SPEC CHECKSUMS:
   JSONModel: ec77e9865236a7a09d9cf7668df6b4b328d9ec1d
   KVOController: 9fd8f0343670994e4b6f9f0b31f5a45663f3e1cf
   MagicalRecord: 89eb7d7ead39fb37f01c3d010665ee94d17f8dba
+  Mantle: 299966b00759634931699f69cb6a30b9239b944d
   pop: bb773ae2c791ca2629de13b347e7a8b450fa6a57
   RESideMenu: f24c508404b49c667344c54aba7e590883533958
   SDWebImage: 1d2b1a1efda1ade1b00b6f8498865f8ddedc8a84

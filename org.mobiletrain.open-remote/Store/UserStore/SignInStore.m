@@ -6,11 +6,12 @@
 @implementation SignInStore
 
 - (void)requestWithSuccess:(void (^)())success failure:(void (^)(NSError *error))failure {
-    NSDictionary *parameters = @{@"PhoneNumberOrEmail":self.account,
-                                 @"Password":[self.passwd md5HexDigest]};
+    NSDictionary *parameters = @{@"account":self.account,
+                                 @"passwd":[self.passwd md5HexDigest]};
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    [manager POST:@"http://42.96.208.2:8080/UserAction/UserLoginHandler.ashx" parameters:parameters success:^(NSURLSessionDataTask *task, id responseObject) {
+    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    [manager POST:[URLString stringByAppendingString:@"user/sign_in"] parameters:parameters success:^(NSURLSessionDataTask *task, id responseObject) {
         NSError *error = [BaseStore errorWithResponseObject:responseObject];
         if (error) {
             // 服务器返回失败，将失败信息反馈给上层调用者

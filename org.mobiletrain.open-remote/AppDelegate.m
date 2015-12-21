@@ -92,25 +92,10 @@
 }
 
 - (BOOL)application:(UIApplication *)application willFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    
-    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    manager.requestSerializer = [AFJSONRequestSerializer serializer];
-//    manager.responseSerializer = [AFImageResponseSerializer serializer];
-    [manager POST:@"http://localhost:8080/group/group_list" parameters:@{@"token":@"3f869b54-8150-4788-bbd6-d81bfbea4a07"} success:^(NSURLSessionDataTask *task, id responseObject) {
-        
-    } failure:^(NSURLSessionDataTask *task, NSError *error) {
-            
-    }];
-    
     [application registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert | UIUserNotificationTypeBadge | UIUserNotificationTypeSound categories:nil]];
     [application registerForRemoteNotifications];
     
     [self createLocalNotification];
-    
-//    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"" message:@"" preferredStyle:UIAlertControllerStyleAlert];
-//    [alert addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-//    }]];
-//    NSLog(@"%d", alert.modalPresentationStyle);
     
     NSString *appid = @"8421d6601aff781a";
     NSString *secretId = @"d3696f1a72f90369";

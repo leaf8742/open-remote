@@ -13,7 +13,7 @@
                                  @"Gender":[NSNumber numberWithInteger:self.gender]};
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    [manager POST:@"http://42.96.208.2:8080/UserAction/RegistUserHandler.ashx" parameters:parameters success:^(NSURLSessionDataTask *task, id responseObject) {
+    [manager POST:[URLString stringByAppendingString:@"UserAction/RegistUserHandler.ashx"] parameters:parameters success:^(NSURLSessionDataTask *task, id responseObject) {
         NSError *error = [BaseStore errorWithResponseObject:responseObject];
         if (error) {
             // 服务器返回失败，将失败信息反馈给上层调用者

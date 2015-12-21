@@ -12,7 +12,7 @@
                                  @"DeviceTypeId":[NSNumber numberWithInteger:self.device.typeCode]};
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    [manager POST:@"http://42.96.208.2:8080/DeviceAction/AddDeviceHandler.ashx" parameters:parameters success:^(NSURLSessionDataTask *task, id responseObject) {
+    [manager POST:[URLString stringByAppendingString:@"DeviceAction/AddDeviceHandler.ashx"] parameters:parameters success:^(NSURLSessionDataTask *task, id responseObject) {
         NSError *error = [BaseStore errorWithResponseObject:responseObject];
         if (error) {
             // 服务器返回失败，将失败信息反馈给上层调用者
