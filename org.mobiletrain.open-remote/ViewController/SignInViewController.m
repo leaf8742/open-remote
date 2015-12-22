@@ -99,8 +99,6 @@
 
 #pragma mark - UITextFieldDelegate
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
-#warning 本机调试
-//    [[CoordinatingController sharedInstance] pushViewControllerWithClass:[HomePageViewController class] animated:YES];
     if (![[IQKeyboardManager sharedManager] goNext]) {
         [[[UIApplication sharedApplication] keyWindow] endEditing:YES];
         [SVProgressHUD showWithMaskType:SVProgressHUDMaskTypeClear];

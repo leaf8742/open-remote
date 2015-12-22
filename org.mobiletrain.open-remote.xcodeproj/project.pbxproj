@@ -30,6 +30,8 @@
 		09395F611C0B1AA900635BEE /* passwd@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 09395F5F1C0B1AA900635BEE /* passwd@2x.png */; };
 		094952A61BD914A200D22433 /* DeviceOperationStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 094952A51BD914A200D22433 /* DeviceOperationStore.m */; };
 		094952A91BD91D1900D22433 /* ModifyDeviceNameStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 094952A81BD91D1900D22433 /* ModifyDeviceNameStore.m */; };
+		099545F51C27BB8400EE8A1F /* ModelExtras.m in Sources */ = {isa = PBXBuildFile; fileRef = 099545F41C27BB8400EE8A1F /* ModelExtras.m */; };
+		099545FB1C283E9200EE8A1F /* GroupMenuCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 099545FA1C283E9200EE8A1F /* GroupMenuCell.m */; };
 		099909581BDE741B006AD52A /* VerticalGradientWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 099909571BDE741B006AD52A /* VerticalGradientWindow.m */; };
 		0B8F3D7AA7A0FF4E0C6EBA6649A612B6 /* AddDeviceStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 965EAF6500A97128F5A9A5D321EA2CC0 /* AddDeviceStore.m */; };
 		0E5E457BDE21128272F134872324604E /* DeviceListStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 75DB5B055072A4DE76D81244188E791F /* DeviceListStore.m */; };
@@ -142,6 +144,10 @@
 		094952A51BD914A200D22433 /* DeviceOperationStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeviceOperationStore.m; sourceTree = "<group>"; };
 		094952A71BD91D1900D22433 /* ModifyDeviceNameStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModifyDeviceNameStore.h; sourceTree = "<group>"; };
 		094952A81BD91D1900D22433 /* ModifyDeviceNameStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModifyDeviceNameStore.m; sourceTree = "<group>"; };
+		099545F31C27BB8400EE8A1F /* ModelExtras.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelExtras.h; sourceTree = "<group>"; };
+		099545F41C27BB8400EE8A1F /* ModelExtras.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelExtras.m; sourceTree = "<group>"; };
+		099545F91C283E9200EE8A1F /* GroupMenuCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupMenuCell.h; sourceTree = "<group>"; };
+		099545FA1C283E9200EE8A1F /* GroupMenuCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupMenuCell.m; sourceTree = "<group>"; };
 		099909561BDE741B006AD52A /* VerticalGradientWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VerticalGradientWindow.h; sourceTree = "<group>"; };
 		099909571BDE741B006AD52A /* VerticalGradientWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VerticalGradientWindow.m; sourceTree = "<group>"; };
 		0A3934AD534F483AC2A116CE49E94ABD /* DeviceListLogic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeviceListLogic.m; sourceTree = "<group>"; };
@@ -590,6 +596,8 @@
 				A5783788643ED76431AEE8373E634E54 /* TaskModel.m */,
 				8FB42B18B44B22F9906189CFC9A0FFF1 /* UserModel.h */,
 				726749AAC469A31AA6410756462FF175 /* UserModel.m */,
+				099545F31C27BB8400EE8A1F /* ModelExtras.h */,
+				099545F41C27BB8400EE8A1F /* ModelExtras.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -704,6 +712,8 @@
 		CB7F954F7B30B735510A395170711EFA /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				099545F91C283E9200EE8A1F /* GroupMenuCell.h */,
+				099545FA1C283E9200EE8A1F /* GroupMenuCell.m */,
 				4EB2252626D2AD4C9F8AEC06148B9927 /* DeviceListViewController.h */,
 				460DD84DB0ECB9212CB6E2DC8E9196EF /* DeviceListViewController.m */,
 				A9B88AFFBE7304FAB3FDE579416911A0 /* DeviceSettingViewController.h */,
@@ -929,6 +939,7 @@
 				0470A4BB9708FB22ED0FE983DEB092C6 /* DeviceModel.m in Sources */,
 				DB0B5333E018C76C6FDEFBFB0CC5B3BE /* DeviceSettingViewController.m in Sources */,
 				09395F4B1C09EAD900635BEE /* ConfirmInputValidator.m in Sources */,
+				099545F51C27BB8400EE8A1F /* ModelExtras.m in Sources */,
 				7D291987E8C8A97B1E1DC62E6DCCC1DF /* DeviceViewController.m in Sources */,
 				A8807D8B4D4536E789FDAB91C12673B3 /* EMTextView.m in Sources */,
 				975866A437F16164DA51249ECAE3FE5C /* GetUserInfoStore.m in Sources */,
@@ -971,6 +982,7 @@
 				09115A6A1C0556720081CCB6 /* LogoAnimateLayer.m in Sources */,
 				FBB7B59DEE2E85F95E472E2F432D4BCA /* THProgressView.m in Sources */,
 				09115A861C0559170081CCB6 /* PrimitiveLayer.m in Sources */,
+				099545FB1C283E9200EE8A1F /* GroupMenuCell.m in Sources */,
 				6742B698E9CDA8B8C033F05432A1CB7C /* TaskListViewController.m in Sources */,
 				649D156451A08E21F40DE757295CA817 /* TaskModel.m in Sources */,
 				F31B197DB4439F95B6BF3A6657D98387 /* UserModel.m in Sources */,

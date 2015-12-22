@@ -19,8 +19,13 @@
         } else {
             // 服务器返回成功，设置用户模型单例
             UserModel *user = [UserModel sharedInstance];
-            [user mergeFromDictionary:responseObject useKeyMapping:YES];
-            user.passwd = self.passwd;
+            user.mobile = responseObject[@"user_mobile"];
+            user.email = responseObject[@"user_email"];
+            user.alias = responseObject[@"user_title"];
+            user.gender = responseObject[@"user_gender"];
+            user.token = responseObject[@"user_token"];
+            user.identity = responseObject[@"user_id"];
+            user.headerImage = responseObject[@"user_image"];
             success();
         }
     } failure:^(NSURLSessionDataTask *task, NSError *error) {

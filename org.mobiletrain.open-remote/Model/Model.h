@@ -7,6 +7,7 @@
 #import "GroupModel.h"
 #import "TaskModel.h"
 #import "UserModel.h"
+#import "ModelExtras.h"
 //#import "MessageModel.h"
 //#import "MessageListModel.h"
 

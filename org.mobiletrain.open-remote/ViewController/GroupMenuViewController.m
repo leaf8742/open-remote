@@ -1,5 +1,8 @@
 #import "GroupMenuViewController.h"
 #import "Model.h"
+#import <KVOController/FBKVOController.h>
+#import "GroupMenuCell.h"
+#import <RESideMenu/RESideMenu.h>
 
 @interface GroupMenuViewController ()
 
@@ -9,6 +12,15 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    [self registerObserving];
+}
+
+- (void)registerObserving {
+    self.KVOController = [FBKVOController controllerWithObserver:self];
+    [self.KVOController observe:[GroupListModel sharedInstance] keyPath:@"groups" options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld block:^(id observer, id object, NSDictionary *change) {
+        [self.collectionView reloadSections:[NSIndexSet indexSetWithIndex:0]];
+    }];
 }
 
 #pragma mark - CoordinatingControllerDelegate
@@ -23,19 +35,22 @@
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
 #warning 本机调试
     return [[GroupListModel groupsWithUser:[UserModel sharedInstance]] count];
-//    return 3;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"GroupReuseIdentifier" forIndexPath:indexPath];
+    GroupMenuCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"GroupReuseIdentifier" forIndexPath:indexPath];
+    NSArray *groups = [GroupListModel groupsWithUser:[UserModel sharedInstance]];
+    cell.textLabel.text = [groups[indexPath.row] name];
+    cell.imageView.image = [UIImage imageNamed:@"icon"];
     return cell;
 }
 
 #pragma mark - UICollectionViewDelegate
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     [GroupListModel sharedInstance].selectedGroup = [GroupListModel groupsWithUser:[UserModel sharedInstance]][indexPath.row];
-    [self dismissViewControllerAnimated:YES completion:^{
-    }];
+    [self.sideMenuViewController hideMenuViewController];
+//    [self dismissViewControllerAnimated:YES completion:^{
+//    }];
 }
 
 #pragma mark - Memory Management

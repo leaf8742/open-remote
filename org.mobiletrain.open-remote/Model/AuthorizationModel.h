@@ -15,6 +15,9 @@
  * @date 2015-10-05
  */
 typedef NS_ENUM(NSInteger, kAuthorization) {
+    /// @brief 创建用户时的群组
+    kAuthorizationPrimary,
+    
     /// @brief 超级管理员
     kAuthorizationSuper,
     
@@ -34,12 +37,9 @@ typedef NS_ENUM(NSInteger, kAuthorization) {
 @interface AuthorizationModel : JSONModel
 
 /// @brief 用户
-@property (copy, nonatomic) UserModel *user;
+@property (weak, nonatomic) UserModel *user;
 
 /// @brief 用户权限
 @property (assign, nonatomic) kAuthorization authorization;
-
-/// @brief 是否是默认群组
-@property (assign, nonatomic) BOOL primary;
 
 @end

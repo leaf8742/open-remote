@@ -1,7 +1,7 @@
 #import "BaseStore.h"
 NSString *const ResponseErrorDomain = @"ResponseErrorDomain";
 NSInteger const ResponseErrorCode = 1890;
-NSString *const URLString = @"http://localhost/";
+NSString *const URLString = @"http://localhost:8080/";
 
 @implementation BaseStore
 

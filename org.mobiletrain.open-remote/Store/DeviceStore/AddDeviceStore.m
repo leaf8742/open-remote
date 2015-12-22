@@ -1,18 +1,19 @@
 #import "AddDeviceStore.h"
 #import "DeviceModel.h"
 #import "GroupModel.h"
+#import "UserModel.h"
 #import <AFNetworking/AFNetworking.h>
 
 @implementation AddDeviceStore
 
 - (void)requestWithSuccess:(void (^)())success failure:(void (^)(NSError *))failure {
-    NSDictionary *parameters = @{@"GroupId":self.group.identity,
-                                 @"DeviceId":self.device.identity,
-                                 @"DeviceName":self.device.name,
-                                 @"DeviceTypeId":[NSNumber numberWithInteger:self.device.typeCode]};
+    NSDictionary *parameters = @{@"group_id":self.group.identity,
+                                 @"token":[UserModel sharedInstance].token,
+                                 @"device_id":self.device.identity};
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    [manager POST:[URLString stringByAppendingString:@"DeviceAction/AddDeviceHandler.ashx"] parameters:parameters success:^(NSURLSessionDataTask *task, id responseObject) {
+    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    [manager POST:[URLString stringByAppendingString:@"device/add_device"] parameters:parameters success:^(NSURLSessionDataTask *task, id responseObject) {
         NSError *error = [BaseStore errorWithResponseObject:responseObject];
         if (error) {
             // 服务器返回失败，将失败信息反馈给上层调用者

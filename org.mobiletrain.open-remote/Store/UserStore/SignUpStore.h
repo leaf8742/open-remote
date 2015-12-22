@@ -4,20 +4,7 @@
  * @date 2015-10-05
  */
 #import "BaseStore.h"
-
-/**
- * @enum kGender
- * @brief 用户性别
- * @author 单宝华
- * @date 2015-10-10
- */
-typedef NS_ENUM(NSInteger, kGender) {
-    /// @brief 男性
-    kGenderMale,
-    
-    /// @brief 女性
-    kGenderFemale,
-};
+#import "UserModel.h"
 
 /**
  * @class SignUpStore

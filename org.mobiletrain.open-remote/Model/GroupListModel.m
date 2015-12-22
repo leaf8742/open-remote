@@ -49,7 +49,6 @@
         return [filteredObjects firstObject];
     } else {
         GroupModel *group = [[GroupModel alloc] init];
-//        EMGroup *group = [[EMGroup alloc] init];
         group.identity = identity;
         [[GroupListModel sharedInstance].groups addObject:group];
         return group;

@@ -7,6 +7,23 @@
 #import <JSONModel/JSONModel.h>
 
 /**
+ * @enum kGender
+ * @brief 用户性别
+ * @author 单宝华
+ * @date 2015-10-10
+ */
+typedef NS_ENUM(NSInteger, kGender) {
+    /// @brief 男性
+    kGenderMale,
+    
+    /// @brief 女性
+    kGenderFemale,
+    
+    /// @brief 未知
+    kGenderUnknown,
+};
+
+/**
  * @class UserModel
  * @brief 用户模型
  * @author 单宝华 

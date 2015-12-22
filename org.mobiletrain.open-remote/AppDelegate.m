@@ -4,9 +4,6 @@
 #import "PersistentManager.h"
 #import "SignInViewController.h"
 #import <IQKeyboardManager/IQKeyboardManager.h>
-//#import "EMSDKFull.h"
-//#import "EaseMob.h"
-//#import "VerticalGradientWindow.h"
 #import "WelcomeViewController.h"
 #import <AFNetworking/AFNetworking.h>
 #import <SDWebImage/SDWebImageManager.h>
