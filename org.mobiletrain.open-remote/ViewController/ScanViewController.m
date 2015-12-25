@@ -10,6 +10,8 @@
 
 @property (strong, nonatomic) AVCaptureSession *session;
 
+@property (strong, nonatomic) CALayer *maskLayer;
+
 @end
 
 @implementation ScanViewController
@@ -17,9 +19,48 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    // Do any additional setup after loading the view, typically from a nib.
+    [self setupMask];
+    
+//    if (![self setupCapture]) {
+//        [self setupTextInput];
+//    }
+}
+
+// 准备镂空方格
+- (void)setupMask {
+    // 镂空方格
+    // 参考 http://segmentfault.com/a/1190000002436915
+    self.maskLayer = [CALayer layer];
+    self.maskLayer.frame = self.view.frame;
+    // 除镂空之外的地方，使用什么颜色填充
+    self.maskLayer.backgroundColor = [UIColor yellowColor].CGColor;
+    // 透明度为60%
+    self.maskLayer.opacity = 1;
+    
+    // 镂空范围为200x200
+    CGFloat rectSize = 200;
+    CAShapeLayer *shapeLayer = [CAShapeLayer layer];
+    shapeLayer.frame = self.view.frame;
+    // http://jamesonquave.com/blog/fun-with-cashapelayer/
+    // 指明左上角和右下角为圆角，其他为方角 byRoundingCorners:UIRectCornerTopLeft | UIRectCornerBottomRight
+    // 指明圆半径为20像素 cornerRadii:CGSizeMake(20, 20)
+    // 镂空方格的frame bezierPathWithRoundedRect
+    UIBezierPath *path = [UIBezierPath bezierPathWithRoundedRect:CGRectMake((self.view.frame.size.width - rectSize) / 2, (self.view.frame.size.height - rectSize) / 2, rectSize, rectSize) byRoundingCorners:UIRectCornerAllCorners cornerRadii:CGSizeMake(40, 40)];
+    [path appendPath:[UIBezierPath bezierPathWithRect:self.view.layer.frame]];
+    shapeLayer.path = path.CGPath;
+    shapeLayer.fillRule = kCAFillRuleEvenOdd;
+    
+    self.maskLayer.mask = shapeLayer;
+    [self.view.layer addSublayer:self.maskLayer];
+}
+
+- (BOOL)setupCapture {
     //获取摄像设备
     AVCaptureDevice * device = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
+    if (device == nil) {
+        return NO;
+    }
+    
     //创建输入流
     AVCaptureDeviceInput * input = [AVCaptureDeviceInput deviceInputWithDevice:device error:nil];
     //创建输出流
@@ -44,31 +85,8 @@
     [self.view.layer insertSublayer:layer atIndex:0];
     //开始捕获
     [session startRunning];
-
-    // 镂空方格
-    // 参考 http://segmentfault.com/a/1190000002436915
-    CALayer *maskLayer = [CALayer layer];
-    maskLayer.frame = self.view.frame;
-    // 除镂空之外的地方，使用什么颜色填充
-    maskLayer.backgroundColor = [UIColor yellowColor].CGColor;
-    // 透明度为60%
-    maskLayer.opacity = 0.6;
-    [self.view.layer addSublayer:maskLayer];
     
-    // 镂空范围为200x200
-    CGFloat rectSize = 200;
-    CAShapeLayer *shapeLayer = [CAShapeLayer layer];
-    shapeLayer.frame = self.view.frame;
-    // http://jamesonquave.com/blog/fun-with-cashapelayer/
-    // 指明左上角和右下角为圆角，其他为方角 byRoundingCorners:UIRectCornerTopLeft | UIRectCornerBottomRight
-    // 指明圆半径为20像素 cornerRadii:CGSizeMake(20, 20)
-    // 镂空方格的frame bezierPathWithRoundedRect
-    UIBezierPath *path = [UIBezierPath bezierPathWithRoundedRect:CGRectMake((self.view.frame.size.width - rectSize) / 2, (self.view.frame.size.height - rectSize) / 2, rectSize, rectSize) byRoundingCorners:UIRectCornerAllCorners cornerRadii:CGSizeMake(40, 40)];
-    [path appendPath:[UIBezierPath bezierPathWithRect:self.view.layer.frame]];
-    shapeLayer.path = path.CGPath;
-    shapeLayer.fillRule = kCAFillRuleEvenOdd;
-    
-    maskLayer.mask = shapeLayer;
+    return YES;
 }
 
 #pragma mark - AVCaptureMetadataOutputObjectsDelegate

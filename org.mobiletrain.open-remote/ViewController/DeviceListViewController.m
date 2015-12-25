@@ -77,6 +77,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     DeviceModel *device = [[[GroupListModel sharedInstance] selectedGroup] devices][indexPath.row];
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"DeviceCell" forIndexPath:indexPath];
+    cell.imageView.image = [UIImage imageNamed:@"icon"];
     cell.textLabel.text = [device name];
     return cell;
 }
@@ -90,17 +91,8 @@
 }
 
 - (void)updateNavigation {
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        GroupSelectedControl *selectGroup = [[GroupSelectedControl alloc] initWithFrame:CGRectMake(0, 0, 120, 40)];
-        [selectGroup setBackgroundColor:[UIColor blackColor]];
-        [selectGroup setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        [selectGroup addTarget:self action:@selector(selectGroup:) forControlEvents:UIControlEventTouchUpInside];
-        
-        UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCamera target:self action:@selector(scan:)];
-        [self.tabBarController.sideMenuViewController.navigationItem setRightBarButtonItem:item];
-        [self.tabBarController.sideMenuViewController.navigationItem setTitleView:selectGroup];
-    });
+    UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCamera target:self action:@selector(scan:)];
+    [self.tabBarController.sideMenuViewController.navigationItem setRightBarButtonItem:item];
 }
 
 #pragma mark - UIViewControllerTransitioningDelegate

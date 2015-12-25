@@ -28,6 +28,7 @@
 }
 
 + (NSArray *)groupsWithUser:(UserModel *)user {
+
     NSArray *result = [[GroupListModel sharedInstance].groups filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(GroupModel *evaluatedObject, NSDictionary *bindings) {
         
         NSArray *hasUser = [evaluatedObject.authz filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(AuthorizationModel *evaluatedObject, NSDictionary *bindings) {
