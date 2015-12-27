@@ -15,10 +15,13 @@
 @interface DeviceViewController : UIViewController<CoordinatingControllerDelegate>
 
 /// @brief 开关设备
-@property (weak, nonatomic) IBOutlet UISwitch *powerOn;
+@property (weak, nonatomic) IBOutlet UIButton *powerOn;
+
+/// @brief 彩色渐变图片
+@property (weak, nonatomic) IBOutlet UIImageView *powerOnBackground;
 
 /// @brief 开关设备
-- (IBAction)powerSwitch:(UISwitch *)sender;
+- (IBAction)powerSwitch:(UIButton *)sender;
 
 /// @brief 定位
 - (IBAction)locate:(UIButton *)sender;

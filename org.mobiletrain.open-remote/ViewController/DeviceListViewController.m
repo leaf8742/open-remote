@@ -75,10 +75,18 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSArray *colors = @[[UIColor colorWithRed:0.682 green:0.976 blue:0.353 alpha:1],
+                        [UIColor colorWithRed:0.612 green:0.984 blue:0.647 alpha:1],
+                        [UIColor colorWithRed:0.424 green:0.89 blue:0.533 alpha:1],
+                        [UIColor colorWithRed:0.467 green:0.776 blue:0.631 alpha:1]];
+
     DeviceModel *device = [[[GroupListModel sharedInstance] selectedGroup] devices][indexPath.row];
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"DeviceCell" forIndexPath:indexPath];
-    cell.imageView.image = [UIImage imageNamed:@"icon"];
+    cell.imageView.image = [UIImage imageNamed:@"device_default"];
     cell.textLabel.text = [device name];
+    cell.textLabel.backgroundColor = [UIColor clearColor];
+    [cell.contentView setBackgroundColor:colors[indexPath.row % 4]];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
 
@@ -114,19 +122,6 @@
     
     return animationController;
 }
-
-//- (id <UIViewControllerInteractiveTransitioning>)interactionControllerForPresentation:(id <UIViewControllerAnimatedTransitioning>)animator {
-//    return nil;
-//}
-//
-//- (id <UIViewControllerInteractiveTransitioning>)interactionControllerForDismissal:(id <UIViewControllerAnimatedTransitioning>)animator {
-//    return nil;
-//}
-//
-//- (UIPresentationController *)presentationControllerForPresentedViewController:(UIViewController *)presented presentingViewController:(UIViewController *)presenting sourceViewController:(UIViewController *)source {
-//    return nil;
-//}
-
 
 #pragma mark - Memory Management
 - (void)didReceiveMemoryWarning {

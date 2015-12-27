@@ -8,6 +8,10 @@
 #import <AFNetworking/AFNetworking.h>
 #import <SDWebImage/SDWebImageManager.h>
 
+#import <ShareSDK/ShareSDK.h>
+#import "WXApi.h"
+#import "WeiboSDK.h"
+
 @interface AppDelegate ()
 
 @end
@@ -89,6 +93,19 @@
 }
 
 - (BOOL)application:(UIApplication *)application willFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    [ShareSDK registerApp:@"9da5d8d700ed"];
+    
+    //当使用新浪微博客户端分享的时候需要按照下面的方法来初始化新浪的平台
+    [ShareSDK  connectSinaWeiboWithAppKey:@"568898243"
+                                appSecret:@"38a4f8204cc784f81f9f0daaf31e02e3"
+                              redirectUri:@"http://www.sharesdk.cn"
+                              weiboSDKCls:[WeiboSDK class]];
+    //微信登陆的时候需要初始化
+    [ShareSDK connectWeChatWithAppId:@"wx4868b35061f87885"
+                           appSecret:@"64020361b8ec4c99936c0e3999a9f249"
+                           wechatCls:[WXApi class]];
+
+    
     [application registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert | UIUserNotificationTypeBadge | UIUserNotificationTypeSound categories:nil]];
     [application registerForRemoteNotifications];
     
@@ -110,9 +127,6 @@
     self.window = [[UIWindow alloc] initWithFrame:frame];
     self.window.rootViewController = [[CoordinatingController sharedInstance] rootViewController];
     
-    //环信注册
-//    [[EaseMob sharedInstance] registerSDKWithAppKey:@"dl-1000phone#openremote" apnsCertName:nil];
-//    [[EaseMob sharedInstance] application:application didFinishLaunchingWithOptions:launchOptions];
     
     [self.window makeKeyAndVisible];
     
@@ -126,7 +140,6 @@
 
 // 获取远程推送授权成功
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
-//    [[EaseMob sharedInstance] application:application didRegisterForRemoteNotificationsWithDeviceToken:deviceToken];
 }
 
 // 接收本地推送
@@ -143,18 +156,6 @@
 
 - (void)applicationWillTerminate:(UIApplication *)application {
     [PersistentManager persist];
-    
-//    [[EaseMob sharedInstance] applicationWillTerminate:application];
-}
-
-// App进入后台
-- (void)applicationDidEnterBackground:(UIApplication *)application{
-//    [[EaseMob sharedInstance] applicationDidEnterBackground:application];
-}
-
-// App将要从后台返回
-- (void)applicationWillEnterForeground:(UIApplication *)application {
-//    [[EaseMob sharedInstance] applicationWillEnterForeground:application];
 }
 
 @end

@@ -18,18 +18,36 @@
     
     DeviceModel *device = [[[GroupListModel sharedInstance] selectedGroup] selectedDevice];
     
-    [self.powerOn setOn:device.powerOn];
+    [self.powerOn setSelected:device.powerOn];
+    if (!device.powerOn) {
+        [self.powerOnBackground setImage:nil];
+    }
+    
     self.title = [device name];
 }
 
-- (IBAction)powerSwitch:(UISwitch *)sender {
+- (IBAction)powerSwitch:(UIButton *)sender {
     [SVProgressHUD showWithMaskType:SVProgressHUDMaskTypeClear];
     DeviceOperationStore *store = [[DeviceOperationStore alloc] init];
-    store.powerOn = sender.on;
+    store.powerOn = sender.selected;
     store.device = [[[GroupListModel sharedInstance] selectedGroup] selectedDevice];
     [store requestWithSuccess:^{
+        sender.selected = !sender.selected;
+        DeviceModel *device = [[[GroupListModel sharedInstance] selectedGroup] selectedDevice];
+        if (!device.powerOn) {
+            [self.powerOnBackground setImage:nil];
+        } else {
+            [self.powerOnBackground setImage:[UIImage imageNamed:@"power_on_background"]];
+        }
         [SVProgressHUD dismiss];
     } failure:^(NSError *error) {
+        sender.selected = !sender.selected;
+        DeviceModel *device = [[[GroupListModel sharedInstance] selectedGroup] selectedDevice];
+        if (!device.powerOn) {
+            [self.powerOnBackground setImage:nil];
+        } else {
+            [self.powerOnBackground setImage:[UIImage imageNamed:@"power_on_background"]];
+        }
         [SVProgressHUD dismiss];
     }];
 }

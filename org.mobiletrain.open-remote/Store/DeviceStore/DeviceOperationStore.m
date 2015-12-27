@@ -5,12 +5,14 @@
 @implementation DeviceOperationStore
 
 - (void)requestWithSuccess:(void (^)())success failure:(void (^)(NSError *))failure {
-    NSDictionary *parameters = @{@"DeviceId":self.device.identity,
-                                 @"DeviceState":self.powerOn ? @1 : @0,
-                                 @"DeviceData":@""};
+    NSString *boolString = self.powerOn ? @"true" : @"false";
+    
+    NSDictionary *parameters = @{@"token":[UserModel sharedInstance].token,
+                                 @"device_id":self.device.identity,
+                                 @"device_status": [NSString stringWithFormat:@"{\"power_on\":%@}", boolString], };
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    [manager POST:[URLString stringByAppendingString:@"DeviceAction/UpdateDeviceStateHandler.ashx"] parameters:parameters success:^(NSURLSessionDataTask *task, id responseObject) {
+    [manager POST:[URLString stringByAppendingString:@"device/device_operation"] parameters:parameters success:^(NSURLSessionDataTask *task, id responseObject) {
         NSError *error = [BaseStore errorWithResponseObject:responseObject];
         if (error) {
             // 服务器返回失败，将失败信息反馈给上层调用者

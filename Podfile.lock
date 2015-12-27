@@ -20,6 +20,7 @@ PODS:
   - AFNetworking/UIKit (2.5.4):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
+  - EaseMobSDK (2.1.9)
   - HexColors (3.0.0)
   - IQKeyboardManager (3.3.2)
   - JSONModel (1.1.0)
@@ -28,37 +29,69 @@ PODS:
   - Mantle (2.0.6):
     - Mantle/extobjc (= 2.0.6)
   - Mantle/extobjc (2.0.6)
+  - MOBFoundation (1.3.0)
   - pop (1.0.8)
   - RESideMenu (4.0.7)
   - SDWebImage (3.7.3):
     - SDWebImage/Core (= 3.7.3)
   - SDWebImage/Core (3.7.3)
+  - ShareSDK2 (2.12.4):
+    - ShareSDK2/Core (= 2.12.4)
+  - ShareSDK2/Connection/SinaWeibo (2.12.4):
+    - ShareSDK2/Extend/SinaWeiboSDK
+  - ShareSDK2/Connection/WeChat (2.12.4):
+    - ShareSDK2/Extend/WeChatSDK
+  - ShareSDK2/Core (2.12.4)
+  - ShareSDK2/Extend/SinaWeiboSDK (2.12.4)
+  - ShareSDK2/Extend/WeChatSDK (2.12.4)
+  - ShareSDK2/UI (2.12.4):
+    - ShareSDK2/UI/Flat (= 2.12.4)
+    - ShareSDK2/UI/iPadDefault (= 2.12.4)
+    - ShareSDK2/UI/iPadSimple (= 2.12.4)
+    - ShareSDK2/UI/iPhoneAppRecommend (= 2.12.4)
+    - ShareSDK2/UI/iPhoneDefault (= 2.12.4)
+    - ShareSDK2/UI/iPhoneSimple (= 2.12.4)
+  - ShareSDK2/UI/Flat (2.12.4)
+  - ShareSDK2/UI/iPadDefault (2.12.4)
+  - ShareSDK2/UI/iPadSimple (2.12.4)
+  - ShareSDK2/UI/iPhoneAppRecommend (2.12.4)
+  - ShareSDK2/UI/iPhoneDefault (2.12.4)
+  - ShareSDK2/UI/iPhoneSimple (2.12.4)
   - SVProgressHUD (1.1.3)
 
 DEPENDENCIES:
   - AFNetworking
+  - EaseMobSDK
   - HexColors
   - IQKeyboardManager
   - JSONModel
   - KVOController
   - MagicalRecord
   - Mantle
+  - MOBFoundation
   - pop
   - RESideMenu
   - SDWebImage
+  - ShareSDK2
+  - ShareSDK2/Connection/SinaWeibo
+  - ShareSDK2/Connection/WeChat
+  - ShareSDK2/UI
   - SVProgressHUD
 
 SPEC CHECKSUMS:
   AFNetworking: 05edc0ac4c4c8cf57bcf4b84be5b0744b6d8e71e
+  EaseMobSDK: cc8415cb99a65debf4711fa2c9c349fd5c843299
   HexColors: 8b83e3fe90c0d466dae7b98c9d22da95799f99cb
   IQKeyboardManager: d863eb0bca424d1f6dad6bdd1f856af52664add8
   JSONModel: ec77e9865236a7a09d9cf7668df6b4b328d9ec1d
   KVOController: 9fd8f0343670994e4b6f9f0b31f5a45663f3e1cf
   MagicalRecord: 89eb7d7ead39fb37f01c3d010665ee94d17f8dba
   Mantle: 299966b00759634931699f69cb6a30b9239b944d
+  MOBFoundation: 6c95e7382d534c74d4b9dc9850cf84acfe0a1f1c
   pop: bb773ae2c791ca2629de13b347e7a8b450fa6a57
   RESideMenu: f24c508404b49c667344c54aba7e590883533958
   SDWebImage: 1d2b1a1efda1ade1b00b6f8498865f8ddedc8a84
+  ShareSDK2: cfe71b8d026bf8f7d592396ab195937bc89bbead
   SVProgressHUD: 748080e4f36e603f6c02aec292664239df5279c1
 
 COCOAPODS: 0.39.0

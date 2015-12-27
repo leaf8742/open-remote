@@ -5,7 +5,8 @@
 @implementation ModifyUserInfoStore
 
 - (void)requestWithSuccess:(void (^)())success failure:(void (^)(NSError *))failure {
-    NSDictionary *parameters = @{@"UserId":[UserModel sharedInstance].identity,
+    NSDictionary *parameters = @{
+                                 @"UserId":[UserModel sharedInstance].identity,
                                  @"PhoneNumber":self.mobile,
                                  @"EmailAddress":self.email,
                                  @"Alias":self.alias};

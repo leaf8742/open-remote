@@ -20,8 +20,12 @@
         } else {
             // 服务器返回成功
             for (NSDictionary *deviceItem in responseObject[@"devices"]) {
-                DeviceModel *device = [DeviceModel deviceWithIdentity:deviceItem[@"device_id"]];
-                [device mergeFromDictionary:deviceItem useKeyMapping:YES];
+                NSData *jsonData = [deviceItem[@"prod_status"] dataUsingEncoding:NSUTF8StringEncoding];
+                NSDictionary *deviceStatus = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingMutableContainers error:nil];
+                DeviceModel *device = [DeviceModel deviceWithIdentity:deviceItem[@"prod_id"]];
+                device.name = deviceItem[@"prod_title"];
+                device.image = deviceItem[@"prod_image"];
+                device.powerOn = [deviceStatus[@"power_on"] boolValue];
                 [self.group insertDevie:device];
             }
             

@@ -13,6 +13,11 @@
  * @date 2015-10-10
  */
 @interface ProfileViewController : UIViewController<CoordinatingControllerDelegate>
+
+/// @brief 分享
+- (IBAction)share:(UIButton *)sender;
+
+/// @brief 退出登录
 - (IBAction)signOut:(UIButton *)sender;
 
 @end

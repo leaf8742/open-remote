@@ -21,9 +21,13 @@
     
     [self setupMask];
     
-//    if (![self setupCapture]) {
-//        [self setupTextInput];
-//    }
+    if (![self setupCapture]) {
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"模拟器不支持摄像头哦" message:nil preferredStyle:UIAlertControllerStyleAlert];
+        [alert addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        }]];
+        [self presentViewController:alert animated:YES completion:^{
+        }];
+    }
 }
 
 // 准备镂空方格
@@ -33,7 +37,7 @@
     self.maskLayer = [CALayer layer];
     self.maskLayer.frame = self.view.frame;
     // 除镂空之外的地方，使用什么颜色填充
-    self.maskLayer.backgroundColor = [UIColor yellowColor].CGColor;
+    self.maskLayer.backgroundColor = [UIColor colorWithWhite:0.333 alpha:0.667].CGColor;
     // 透明度为60%
     self.maskLayer.opacity = 1;
     
@@ -92,31 +96,48 @@
 #pragma mark - AVCaptureMetadataOutputObjectsDelegate
 -(void)captureOutput:(AVCaptureOutput *)captureOutput didOutputMetadataObjects:(NSArray *)metadataObjects fromConnection:(AVCaptureConnection *)connection{
     if (metadataObjects.count>0) {
-        [self.session stopRunning];
         AVMetadataMachineReadableCodeObject * metadataObject = [metadataObjects objectAtIndex:0];
         
         NSDictionary *deviceDict = [NSJSONSerialization JSONObjectWithData:[metadataObject.stringValue dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableContainers error:nil];
-        DeviceModel *device = [DeviceModel deviceWithIdentity:deviceDict[@"DeviceId"]];
-        device.typeCode = [deviceDict[@"DeviceTypeId"] integerValue];
-        device.name = deviceDict[@"DeviceName"];
+        if (deviceDict == nil) {
+            return;
+        }
         
-        [SVProgressHUD showWithMaskType:SVProgressHUDMaskTypeClear];
-        AddDeviceStore *store = [[AddDeviceStore alloc] init];
-        store.device = device;
-        store.group = [GroupListModel sharedInstance].selectedGroup;
-        [store requestWithSuccess:^{
-            [SVProgressHUD dismiss];
-            [[CoordinatingController sharedInstance] popViewController];
-        } failure:^(NSError *error) {
-            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"" message:error.localizedDescription preferredStyle:UIAlertControllerStyleAlert];
-            [alert addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-            }]];
-            [self presentViewController:alert animated:YES completion:^{
-            }];
-            
-            [SVProgressHUD dismiss];
-        }];
+        if (self.scanType == kScanTypeDevice) {
+            [self handleScanDevice:deviceDict];
+        } else if (self.scanType == kScanTypeUser) {
+            [self handleScanUser:deviceDict];
+        }
     }
+}
+
+- (void)handleScanDevice:(NSDictionary *)object {
+    [self.session stopRunning];
+    DeviceModel *device = [DeviceModel deviceWithIdentity:object[@"prod_id"]];
+    device.typeCode = [object[@"prod_type"] integerValue];
+    device.name = object[@"prod_title"];
+    
+    [SVProgressHUD showWithMaskType:SVProgressHUDMaskTypeClear];
+    AddDeviceStore *store = [[AddDeviceStore alloc] init];
+    store.device = device;
+    store.group = [GroupListModel sharedInstance].selectedGroup;
+    [store requestWithSuccess:^{
+        [SVProgressHUD dismiss];
+        [[CoordinatingController sharedInstance] popViewController];
+    } failure:^(NSError *error) {
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"" message:error.localizedDescription preferredStyle:UIAlertControllerStyleAlert];
+        [alert addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        }]];
+        [self presentViewController:alert animated:YES completion:^{
+        }];
+        
+        [SVProgressHUD dismiss];
+        [self.session startRunning];
+    }];
+}
+
+- (void)handleScanUser:(NSDictionary *)object {
+#warning TODO
 }
 
 #pragma mark - CoordinatingControllerDelegate
