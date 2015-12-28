@@ -2,6 +2,8 @@
 #import "DeviceListViewController.h"
 #import "GroupListViewController.h"
 #import "ProfileViewController.h"
+#import "GraphicsAssist.h"
+#import <EaseUI/EaseUI.h>
 
 @interface HomePageViewController ()<UITabBarControllerDelegate, RESideMenuDelegate>
 
@@ -26,13 +28,15 @@
 }
 
 - (void)buildHomePage {
-    UITabBarItem *deviceListTab = [[UITabBarItem alloc] init];
+    UITabBarItem *deviceListTab = [[UITabBarItem alloc] initWithTitle:@"家居" image:[GraphicsAssist imageWithImageSimple:[UIImage imageNamed:@"home"] scaledToSize:CGSizeMake(36, 36)] tag:0];
     self.deviceListVC = [DeviceListViewController buildViewController];
     [self.deviceListVC setTabBarItem:deviceListTab];
     [self.deviceListVC setTitle:@"家居"];
     
     UITabBarItem *groupListTab = [[UITabBarItem alloc] init];
-    self.groupListVC = [GroupListViewController buildViewController];
+    EaseMessageViewController *chatController = [[EaseMessageViewController alloc] initWithConversationChatter:@"8001" conversationType:eConversationTypeChat];
+    
+    self.groupListVC = chatController;
     [self.groupListVC setTabBarItem:groupListTab];
     [self.groupListVC setTitle:@"群组"];
     

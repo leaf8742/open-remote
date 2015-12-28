@@ -12,6 +12,7 @@
                                  @"device_status": [NSString stringWithFormat:@"{\"power_on\":%@}", boolString], };
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    manager.requestSerializer = [AFJSONRequestSerializer serializer];
     [manager POST:[URLString stringByAppendingString:@"device/device_operation"] parameters:parameters success:^(NSURLSessionDataTask *task, id responseObject) {
         NSError *error = [BaseStore errorWithResponseObject:responseObject];
         if (error) {

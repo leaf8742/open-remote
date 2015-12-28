@@ -11,6 +11,7 @@
 #import <ShareSDK/ShareSDK.h>
 #import "WXApi.h"
 #import "WeiboSDK.h"
+#import <EaseUI/EaseUI.h>
 
 @interface AppDelegate ()
 
@@ -93,6 +94,12 @@
 }
 
 - (BOOL)application:(UIApplication *)application willFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    [[EaseSDKHelper shareHelper] easemobApplication:application
+                      didFinishLaunchingWithOptions:launchOptions
+                                             appkey:@"mobiletrain#open-remote"
+                                       apnsCertName:@"aps_developer"
+                                        otherConfig:@{kSDKConfigEnableConsoleLogger:[NSNumber numberWithBool:YES]}];
+
     [ShareSDK registerApp:@"9da5d8d700ed"];
     
     //当使用新浪微博客户端分享的时候需要按照下面的方法来初始化新浪的平台

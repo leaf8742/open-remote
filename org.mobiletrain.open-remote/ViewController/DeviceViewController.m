@@ -62,7 +62,6 @@
     }]];
     [self presentViewController:alert animated:YES completion:^{
     }];
-//    [[CoordinatingController sharedInstance] pushViewControllerWithClass:[TaskListViewController class] animated:YES];
 }
 
 - (IBAction)setting:(UIButton *)sender {
@@ -82,9 +81,10 @@
             [SVProgressHUD dismiss];
         }];
     }]];
+    [alert addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+    }]];
     [self presentViewController:alert animated:YES completion:^{
     }];
-//    [[CoordinatingController sharedInstance] pushViewControllerWithClass:[DeviceSettingViewController class] animated:YES];
 }
 
 #pragma mark - CoordinatingControllerDelegate
