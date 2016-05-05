@@ -4,6 +4,7 @@
  * @date 2015-10-05
  */
 #import <Foundation/Foundation.h>
+@class EMError;
 
 /// @brief 网络组件请求成功，但服务器返回失败
 FOUNDATION_EXPORT NSString *const ResponseErrorDomain;
@@ -27,5 +28,9 @@ FOUNDATION_EXPORT NSString *const URLString;
 /// @param responseObject 网络返回对象
 /// @return 如果有错误，创建NSError返回；如果没有错误，返回nil
 + (NSError *)errorWithResponseObject:(NSDictionary *)responseObject;
+
++ (NSDictionary *)dictWithoutNull:(NSDictionary *)dict;
+
++ (NSError *)transformEMError:(EMError *)error;
 
 @end

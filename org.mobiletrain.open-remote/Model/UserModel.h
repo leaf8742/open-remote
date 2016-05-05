@@ -58,28 +58,28 @@ typedef NS_ENUM(NSInteger, kGender) {
 /// @brief 用户名片二维码
 @property (copy, nonatomic) NSString *QRCode;
 
-/// @brief 单例
-+ (UserModel *)sharedInstance;
+/// @brief 当前用户
++ (instancetype)currentUser;
 
 /**
  * @brief 根据用户手机号码查找用户
  * @param mobile 要查找的用户手机号码
  * @return 如果查找到，直接返回;如果查找不到，创建一个返回
  */
-+ (UserModel *)userWithMobile:(NSString *)mobile;
++ (instancetype)userWithMobile:(NSString *)mobile;
 
 /**
  * @brief 根据用户邮箱查找用户
  * @param mobile 要查找的用户邮箱
  * @return 如果查找到，直接返回;如果查找不到，创建一个返回
  */
-+ (UserModel *)userWithEmail:(NSString *)email;
++ (instancetype)userWithEmail:(NSString *)email;
 
 /**
  * @brief 根据用户身份唯一标识查找用户
  * @param mobile 要查找的用户身份唯一标识
  * @return 如果查找到，直接返回;如果查找不到，创建一个返回
  */
-+ (UserModel *)userWithIdentity:(NSString *)identity;
++ (instancetype)userWithIdentity:(NSString *)identity;
 
 @end

@@ -2,16 +2,15 @@
 #import "ConfigHeader.h"
 #import "CoordinatingController.h"
 #import "PersistentManager.h"
-#import "SignInViewController.h"
-#import <IQKeyboardManager/IQKeyboardManager.h>
 #import "WelcomeViewController.h"
-#import <AFNetworking/AFNetworking.h>
-#import <SDWebImage/SDWebImageManager.h>
 
-#import <ShareSDK/ShareSDK.h>
-#import "WXApi.h"
-#import "WeiboSDK.h"
+#import <IQKeyboardManager/IQKeyboardManager.h>
 #import <EaseUI/EaseUI.h>
+//#import <ShareSDK/ShareSDK.h>
+//#import "WXApi.h"
+//#import "WeiboSDK.h"
+
+#import <AFNetworking/AFNetworking.h>
 
 @interface AppDelegate ()
 
@@ -19,6 +18,104 @@
 
 
 @implementation AppDelegate
+
+- (BOOL)application:(UIApplication *)application willFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    [self appearance];
+    [self setupEaseSDK:application launchOptions:launchOptions];
+//    [self setupYoumi];
+    [self setupShareSDK];
+    [self setupPushNotification:application];
+    
+    [PersistentManager serialize];
+    
+    [IQKeyboardManager sharedManager].enableAutoToolbar = NO;
+    
+    [[CoordinatingController sharedInstance] pushViewControllerWithClass:[WelcomeViewController class] animated:NO];
+    
+    CGRect frame = [UIScreen mainScreen].bounds;
+    frame.origin = CGPointZero;
+    self.window = [[UIWindow alloc] initWithFrame:frame];
+    self.window.rootViewController = [[CoordinatingController sharedInstance] rootViewController];
+    
+    [self.window makeKeyAndVisible];
+    
+    return YES;
+}
+
+// 获取远程推送授权成功
+- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
+}
+
+// 接收本地推送
+- (void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification*)notification {
+}
+
+// 获取远程推送授权失败
+- (void)application:(UIApplication*)application didFailToRegisterForRemoteNotificationsWithError:(NSError*)error{
+}
+
+// 接收远程推送
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
+}
+
+- (void)applicationWillTerminate:(UIApplication *)application {
+    [PersistentManager persist];
+}
+
+#pragma mark - !!!
+// UI样式
+- (void)appearance {
+    [[UINavigationBar appearance] setBackgroundImage:[[UIImage alloc] init] forBarMetrics:UIBarMetricsDefault];
+    [[UINavigationBar appearance] setShadowImage:[[UIImage alloc] init]];
+    [[UINavigationBar appearance] setTintColor:[UIColor colorWithWhite:0.6 alpha:1]];
+    [[UINavigationBar appearance] setTranslucent:YES];
+}
+
+// 初始化环信
+- (void)setupEaseSDK:(UIApplication *)application launchOptions:(NSDictionary *)launchOptions {
+    [[EaseSDKHelper shareHelper] easemobApplication:application
+                      didFinishLaunchingWithOptions:launchOptions
+                                             appkey:@"mobiletrain#im-remote"
+                                       apnsCertName:@"aps_developer"
+                                        otherConfig:@{kSDKConfigEnableConsoleLogger:[NSNumber numberWithBool:YES]}];
+    [[EaseMob sharedInstance] registerSDKWithAppKey:@"mobiletrain#im-sample" apnsCertName:@""];
+    [[EaseMob sharedInstance] application:application didFinishLaunchingWithOptions:launchOptions];
+}
+
+// 初始化有米广告
+- (void)setupYoumi {
+    NSString *appid = @"8421d6601aff781a";
+    NSString *secretId = @"d3696f1a72f90369";
+    [NewWorldSpt initQQWDeveloperParams:appid QQ_SecretId:secretId];
+    [NewWorldSpt initQQWDeveLoper:kTypePortrait];
+}
+
+// 初始化ShareSDK
+- (void)setupShareSDK {
+//    [ShareSDK registerApp:@"9da5d8d700ed"];
+//    
+//    //当使用新浪微博客户端分享的时候需要按照下面的方法来初始化新浪的平台
+//    [ShareSDK  connectSinaWeiboWithAppKey:@"568898243"
+//                                appSecret:@"38a4f8204cc784f81f9f0daaf31e02e3"
+//                              redirectUri:@"http://www.sharesdk.cn"
+//                              weiboSDKCls:[WeiboSDK class]];
+//    //微信登陆的时候需要初始化
+//    [ShareSDK connectWeChatWithAppId:@"wx4868b35061f87885"
+//                           appSecret:@"64020361b8ec4c99936c0e3999a9f249"
+//                           wechatCls:[WXApi class]];
+}
+
+// 初始化推送
+- (void)setupPushNotification:(UIApplication *)application {
+    [application registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert | UIUserNotificationTypeBadge | UIUserNotificationTypeSound categories:nil]];
+    [application registerForRemoteNotifications];
+    
+    if ([[UIApplication sharedApplication] currentUserNotificationSettings].types == UIUserNotificationTypeNone) {
+        
+    }
+    
+//    [self createLocalNotification];
+}
 
 - (void)createLocalNotification {
     // 创建一个本地推送
@@ -91,78 +188,6 @@
             return;
         }
     }
-}
-
-- (BOOL)application:(UIApplication *)application willFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    [[EaseSDKHelper shareHelper] easemobApplication:application
-                      didFinishLaunchingWithOptions:launchOptions
-                                             appkey:@"mobiletrain#open-remote"
-                                       apnsCertName:@"aps_developer"
-                                        otherConfig:@{kSDKConfigEnableConsoleLogger:[NSNumber numberWithBool:YES]}];
-
-    [ShareSDK registerApp:@"9da5d8d700ed"];
-    
-    //当使用新浪微博客户端分享的时候需要按照下面的方法来初始化新浪的平台
-    [ShareSDK  connectSinaWeiboWithAppKey:@"568898243"
-                                appSecret:@"38a4f8204cc784f81f9f0daaf31e02e3"
-                              redirectUri:@"http://www.sharesdk.cn"
-                              weiboSDKCls:[WeiboSDK class]];
-    //微信登陆的时候需要初始化
-    [ShareSDK connectWeChatWithAppId:@"wx4868b35061f87885"
-                           appSecret:@"64020361b8ec4c99936c0e3999a9f249"
-                           wechatCls:[WXApi class]];
-
-    
-    [application registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert | UIUserNotificationTypeBadge | UIUserNotificationTypeSound categories:nil]];
-    [application registerForRemoteNotifications];
-    
-    [self createLocalNotification];
-    
-    NSString *appid = @"8421d6601aff781a";
-    NSString *secretId = @"d3696f1a72f90369";
-    [NewWorldSpt initQQWDeveloperParams:appid QQ_SecretId:secretId];
-    [NewWorldSpt initQQWDeveLoper:kTypePortrait];
-    
-    [PersistentManager serialize];
-    
-    [IQKeyboardManager sharedManager].enableAutoToolbar = NO;
-    
-    [[CoordinatingController sharedInstance] pushViewControllerWithClass:[WelcomeViewController class] animated:NO];
-    
-    CGRect frame = [UIScreen mainScreen].bounds;
-    frame.origin = CGPointZero;
-    self.window = [[UIWindow alloc] initWithFrame:frame];
-    self.window.rootViewController = [[CoordinatingController sharedInstance] rootViewController];
-    
-    
-    [self.window makeKeyAndVisible];
-    
-    [[UINavigationBar appearance] setBackgroundImage:[[UIImage alloc] init] forBarMetrics:UIBarMetricsDefault];
-    [[UINavigationBar appearance] setShadowImage:[[UIImage alloc] init]];
-    [[UINavigationBar appearance] setTintColor:[UIColor colorWithWhite:0.6 alpha:1]];
-    [[UINavigationBar appearance] setTranslucent:YES];
-
-    return YES;
-}
-
-// 获取远程推送授权成功
-- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
-}
-
-// 接收本地推送
-- (void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification*)notification {
-}
-
-// 获取远程推送授权失败
-- (void)application:(UIApplication*)application didFailToRegisterForRemoteNotificationsWithError:(NSError*)error{
-}
-
-// 接收远程推送
-- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
-}
-
-- (void)applicationWillTerminate:(UIApplication *)application {
-    [PersistentManager persist];
 }
 
 @end

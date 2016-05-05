@@ -18,6 +18,11 @@
  */
 @interface GroupListModel : JSONModel
 
+/// @brief 当前被选中的group
+@property (strong, nonatomic) GroupModel *selectedGroup;
+
++ (NSMutableArray *)groupsWithCurrentUser;
+
 /**
  * @brief 查找指定用户的群组
  * @param user 要指定查找哪一个用户
@@ -34,8 +39,5 @@
 
 /// @brief 单例
 + (instancetype)sharedInstance;
-
-/// @brief 当前被选中的group
-@property (strong, nonatomic) GroupModel *selectedGroup;
 
 @end

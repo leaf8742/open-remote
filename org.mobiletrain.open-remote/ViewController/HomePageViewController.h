@@ -9,6 +9,7 @@
 
 @class DeviceListViewController;
 @class GroupListViewController;
+@class EaseMessageViewController;
 
 /**
  * @class HomePageViewController
@@ -22,6 +23,6 @@
 @property (strong, nonatomic) DeviceListViewController *deviceListVC;
 
 /// @brief 群组页面
-@property (strong, nonatomic) GroupListViewController *groupListVC;
+@property (strong, nonatomic) EaseMessageViewController *chatViewController;
 
 @end

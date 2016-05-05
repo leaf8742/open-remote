@@ -7,7 +7,7 @@
 @implementation DeviceListStore
 
 - (void)requestWithSuccess:(void (^)())success failure:(void (^)(NSError *))failure {
-    NSDictionary *parameters = @{@"token":[UserModel sharedInstance].token,
+    NSDictionary *parameters = @{@"token":[UserModel currentUser].token,
                                  @"group_id":self.group.identity};
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
@@ -20,11 +20,15 @@
         } else {
             // 服务器返回成功
             for (NSDictionary *deviceItem in responseObject[@"devices"]) {
-                NSData *jsonData = [deviceItem[@"prod_status"] dataUsingEncoding:NSUTF8StringEncoding];
-                NSDictionary *deviceStatus = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingMutableContainers error:nil];
-                DeviceModel *device = [DeviceModel deviceWithIdentity:deviceItem[@"prod_id"]];
-                device.name = deviceItem[@"prod_title"];
-                device.image = deviceItem[@"prod_image"];
+                NSDictionary *deviceItemWithoutNull = [BaseStore dictWithoutNull:deviceItem];
+                NSData *jsonData = [deviceItemWithoutNull[@"prod_status"] dataUsingEncoding:NSUTF8StringEncoding];
+                NSDictionary *deviceStatus = nil;
+                if (jsonData) {
+                    deviceStatus = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingMutableContainers error:nil];
+                }
+                DeviceModel *device = [DeviceModel deviceWithIdentity:deviceItemWithoutNull[@"prod_id"]];
+                device.name = deviceItemWithoutNull[@"prod_title"];
+                device.image = deviceItemWithoutNull[@"prod_image"];
                 device.powerOn = [deviceStatus[@"power_on"] boolValue];
                 [self.group insertDevie:device];
             }

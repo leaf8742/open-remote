@@ -17,4 +17,6 @@
 /// @brief 返回一个字符串加密过的MD5编码，原字符串不发生改变
 - (NSString *)md5HexDigest;
 
+- (NSString *)improveMD5;
+
 @end

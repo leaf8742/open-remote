@@ -1,6 +1,6 @@
 #import "GroupMenuViewController.h"
 #import "Model.h"
-#import <KVOController/FBKVOController.h>
+#import <KVOController/KVOController.h>
 #import "GroupMenuCell.h"
 #import <RESideMenu/RESideMenu.h>
 
@@ -34,12 +34,12 @@
 #pragma mark - UICollectionViewDataSource
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
 #warning 本机调试
-    return [[GroupListModel groupsWithUser:[UserModel sharedInstance]] count];
+    return [[GroupListModel groupsWithUser:[UserModel currentUser]] count];
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     GroupMenuCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"GroupReuseIdentifier" forIndexPath:indexPath];
-    NSArray *groups = [GroupListModel groupsWithUser:[UserModel sharedInstance]];
+    NSArray *groups = [GroupListModel groupsWithUser:[UserModel currentUser]];
     cell.textLabel.text = [groups[indexPath.row] name];
     cell.imageView.image = [UIImage imageNamed:@"icon"];
     return cell;
@@ -47,7 +47,7 @@
 
 #pragma mark - UICollectionViewDelegate
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    [GroupListModel sharedInstance].selectedGroup = [GroupListModel groupsWithUser:[UserModel sharedInstance]][indexPath.row];
+    [GroupListModel sharedInstance].selectedGroup = [GroupListModel groupsWithCurrentUser][indexPath.row];
     [self.sideMenuViewController hideMenuViewController];
 //    [self dismissViewControllerAnimated:YES completion:^{
 //    }];

@@ -5,7 +5,7 @@
 @implementation GroupListStore
 
 - (void)requestWithSuccess:(void (^)())success failure:(void (^)(NSError *))failure {
-    NSDictionary *parameters = @{@"token":[UserModel sharedInstance].token};
+    NSDictionary *parameters = @{@"token":[UserModel currentUser].token};
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     manager.requestSerializer = [AFJSONRequestSerializer serializer];
@@ -26,7 +26,7 @@
                 AuthorizationModel *authorization = [group currentAuthorization];
                 if (authorization == nil) {
                     authorization = [[AuthorizationModel alloc] init];
-                    authorization.user = [UserModel sharedInstance];
+                    authorization.user = [UserModel currentUser];
                     [group.authz addObject:authorization];
                 }
                 authorization.authorization = authorizationWithString(responseObject[@"authorization"]);

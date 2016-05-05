@@ -32,6 +32,10 @@
         CGPointMakeWithDictionaryRepresentation((CFDictionaryRef)pointsDict, &point);
         [self.points addObject : [NSValue valueWithCGPoint:point]];
     }
+    
+    if (dict[@"close"]) {
+        self.close = [dict[@"close"] boolValue];
+    }
 }
 
 - (void)display{

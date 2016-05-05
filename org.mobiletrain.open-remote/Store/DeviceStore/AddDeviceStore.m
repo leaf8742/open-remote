@@ -8,7 +8,7 @@
 
 - (void)requestWithSuccess:(void (^)())success failure:(void (^)(NSError *))failure {
     NSDictionary *parameters = @{@"group_id":self.group.identity,
-                                 @"token":[UserModel sharedInstance].token,
+                                 @"token":[UserModel currentUser].token,
                                  @"device_id":self.device.identity};
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
@@ -20,7 +20,7 @@
             failure(error);
         } else {
             // 服务器返回成功
-            [[self.group mutableArrayValueForKey:@"devices"] addObject:self.device];
+            [self.group insertDevie:self.device];
             success();
         }
     } failure:^(NSURLSessionDataTask *task, NSError *error) {

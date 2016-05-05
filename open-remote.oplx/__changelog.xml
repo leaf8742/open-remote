@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<changelog xmlns="http://www.omnigroup.com/namespace/OmniPlan/v2">
+  <version>2.1</version>
+  <task-change-set user="LEAF" date="2016-01-27T06:49:05.315Z" timestamp="2016-01-27T06:49:05.315Z">
+    <change idref="t4" from="t-1" from-position="2"/>
+    <change idref="t10" to="t-1" to-position="2">
+      <change idref="t10" attribute="title" type="string" to="&gt;任务 1"/>
+    </change>
+    <change idref="t3" attribute="title" type="string" from="" to="Model层各查询函数的编写"/>
+    <change idref="t3" attribute="effort" type="real" from="28800" to="14400"/>
+    <change idref="t3" attribute="noEarlierThanConstraintDate" type="date" to="2016-01-28T00:00:00.000Z"/>
+  </task-change-set>
+  <task-change-set user="LEAF" date="2016-01-27T09:15:47.767Z" timestamp="2016-01-27T09:15:47.767Z">
+    <change idref="t3" attribute="noEarlierThanConstraintDate" type="date" to="2001-01-01T10:30:00.000Z"/>
+    <change idref="t10" attribute="noEarlierThanConstraintDate" type="date" to="2001-01-02T01:00:00.000Z"/>
+    <change idref="t18" attribute="noEarlierThanConstraintDate" type="date" to="2001-01-08T01:00:00.000Z"/>
+    <change idref="t20" attribute="noEarlierThanConstraintDate" type="date" to="2001-01-03T07:30:00.000Z"/>
+    <change idref="t21" attribute="noEarlierThanConstraintDate" type="date" to="2001-01-03T01:00:00.000Z"/>
+    <change idref="t22" attribute="noEarlierThanConstraintDate" type="date" to="2001-01-03T10:30:00.000Z"/>
+    <change idref="t23" attribute="noEarlierThanConstraintDate" type="date" to="2001-01-03T12:30:00.000Z"/>
+    <change idref="t24" attribute="noEarlierThanConstraintDate" type="date" to="2001-01-04T02:30:00.000Z"/>
+    <change idref="t25" attribute="noEarlierThanConstraintDate" type="date" to="2001-01-04T07:30:00.000Z"/>
+    <change idref="t26" attribute="noEarlierThanConstraintDate" type="date" to="2001-01-04T10:30:00.000Z"/>
+    <change idref="t27" attribute="noEarlierThanConstraintDate" type="date" to="2001-01-04T12:30:00.000Z"/>
+    <change idref="t28" attribute="noEarlierThanConstraintDate" type="date" to="2001-01-05T02:30:00.000Z"/>
+    <change idref="t29" attribute="noEarlierThanConstraintDate" type="date" to="2001-01-05T07:30:00.000Z"/>
+    <change idref="t30" attribute="noEarlierThanConstraintDate" type="date" to="2001-01-03T03:00:00.000Z"/>
+    <change idref="t32" attribute="noEarlierThanConstraintDate" type="date" to="2001-01-05T10:30:00.000Z"/>
+    <change idref="t34" attribute="noEarlierThanConstraintDate" type="date" to="2001-01-06T00:30:00.000Z"/>
+    <change idref="t37" attribute="noEarlierThanConstraintDate" type="date" to="2001-01-06T06:00:00.000Z"/>
+    <change idref="t43" attribute="noEarlierThanConstraintDate" type="date" to="2001-01-08T06:30:00.000Z"/>
+    <change idref="t46" attribute="noEarlierThanConstraintDate" type="date" to="2001-01-08T08:30:00.000Z"/>
+    <change idref="t63" attribute="notesAllowingNil" type="textdata" from="e1xydGYxXGFuc2lcYW5zaWNwZzkzNlxjb2NvYXJ0ZjE0MDRcY29jb2FzdWJydGYzNDAKe1xmb250dGJsXGYwXGZuaWxcZmNoYXJzZXQxMzQgUGluZ0ZhbmdTQy1SZWd1bGFyO30Ke1xjb2xvcnRibDtccmVkMjU1XGdyZWVuMjU1XGJsdWUyNTU7XHJlZDg1XGdyZWVuODVcYmx1ZTg1O30KXHBhcmRcdHg1NjBcdHgxMTIwXHR4MTY4MFx0eDIyNDBcdHgyODAwXHR4MzM2MFx0eDM5MjBcdHg0NDgwXHR4NTA0MFx0eDU2MDBcdHg2MTYwXHR4NjcyMFxwYXJkaXJuYXR1cmFsXHBhcnRpZ2h0ZW5mYWN0b3IwCgpcZjBcZnMyMiBcY2YyIFwnYjJcJ2UwXCdiYlwnYWNcJ2IyXCdjYlwnYjVcJ2E1fQ==" to="e1xydGYxXGFuc2lcYW5zaWNwZzkzNlxjb2NvYXJ0ZjE0MDRcY29jb2FzdWJydGYzNDAKe1xmb250dGJsXGYwXGZuaWxcZmNoYXJzZXQxMzQgUGluZ0ZhbmdTQy1SZWd1bGFyO30Ke1xjb2xvcnRibDtccmVkMjU1XGdyZWVuMjU1XGJsdWUyNTU7XHJlZDg1XGdyZWVuODVcYmx1ZTg1O30KXHBhcmRcdHg1NjBcdHgxMTIwXHR4MTY4MFx0eDIyNDBcdHgyODAwXHR4MzM2MFx0eDM5MjBcdHg0NDgwXHR4NTA0MFx0eDU2MDBcdHg2MTYwXHR4NjcyMFxwYXJkaXJuYXR1cmFsXHBhcnRpZ2h0ZW5mYWN0b3IwCgpcZjBcZnMyMiBcY2YyIFwnYjJcJ2UwXCdiYlwnYWNcJ2IyXCdjYlwnYjVcJ2E1XCdhMVwnYTJcJ2Q2XCdmN1wnZDJcJ2IzXCdjM1wnZTZcJ2Q1XCdmYlwnYmFcJ2NmfQ=="/>
+    <change idref="t63" attribute="noEarlierThanConstraintDate" type="date" to="2001-01-09T01:00:00.000Z"/>
+    <change idref="t64" attribute="noEarlierThanConstraintDate" type="date" to="2001-01-09T06:30:00.000Z"/>
+    <change idref="t65" attribute="noEarlierThanConstraintDate" type="date" to="2001-01-02T09:15:00.000Z"/>
+  </task-change-set>
+  <task-change-set user="LEAF" date="2016-02-14T15:22:54.631Z" timestamp="2016-02-14T15:22:54.631Z">
+    <change idref="t71" to="t-1" to-position="13" resolved="yes">
+      <change idref="t71" attribute="effort" type="real" from="28800" to="55800"/>
+      <change idref="t71" attribute="noEarlierThanConstraintDate" type="date" to="2001-01-12T01:00:00.000Z"/>
+      <change idref="t71" attribute="title" type="string" to="群聊功能编写"/>
+    </change>
+  </task-change-set>
+</changelog>

@@ -1,5 +1,5 @@
 #import "GroupSelectedControl.h"
-#import <KVOController/FBKVOController.h>
+#import <KVOController/KVOController.h>
 #import "Model.h"
 
 @implementation GroupSelectedControl

@@ -19,7 +19,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.title = @"群组";
+    self.title = @"互动";
 }
 
 #pragma mark - CoordinatingControllerDelegate

@@ -20,7 +20,7 @@
 @property (assign, nonatomic) CGSize layerSize;
 
 /// @brief 动画结束block
-@property (copy, nonatomic) void(^completionBlock)() ;
+@property (copy, nonatomic) void(^completionBlock)();
 
 /// @brief 准备房子多边形
 - (void)preparePolygon;

@@ -4,8 +4,11 @@
 #import "ProfileViewController.h"
 #import "GraphicsAssist.h"
 #import <EaseUI/EaseUI.h>
+#import "Model.h"
+#import "NSString+UUIDHandle.h"
+#import <KVOController/KVOController.h>
 
-@interface HomePageViewController ()<UITabBarControllerDelegate, RESideMenuDelegate>
+@interface HomePageViewController ()<UITabBarControllerDelegate, RESideMenuDelegate, EaseMessageViewControllerDelegate, EaseMessageViewControllerDataSource, EMChatManagerDelegate>
 
 @property (retain, nonatomic) UITabBarController *tabBarController;
 
@@ -16,6 +19,11 @@
 
 - (id)init {
     if (self = [super init]) {
+        self.KVOController = [FBKVOController controllerWithObserver:self];
+        [self.KVOController observe:[GroupListModel sharedInstance] keyPath:@"selectedGroup" options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld block:^(id observer, id object, NSDictionary *change) {
+            [self buildChatViewController];
+            [self.tabBarController setViewControllers:@[self.deviceListVC, self.chatViewController]];
+        }];
         self.tabBarController = [[UITabBarController alloc] init];
         [self buildHomePage];
     }
@@ -28,19 +36,12 @@
 }
 
 - (void)buildHomePage {
-    UITabBarItem *deviceListTab = [[UITabBarItem alloc] initWithTitle:@"家居" image:[GraphicsAssist imageWithImageSimple:[UIImage imageNamed:@"home"] scaledToSize:CGSizeMake(36, 36)] tag:0];
-    self.deviceListVC = [DeviceListViewController buildViewController];
-    [self.deviceListVC setTabBarItem:deviceListTab];
-    [self.deviceListVC setTitle:@"家居"];
+    [[EaseMob sharedInstance].chatManager addDelegate:self delegateQueue:nil];
     
-    UITabBarItem *groupListTab = [[UITabBarItem alloc] init];
-    EaseMessageViewController *chatController = [[EaseMessageViewController alloc] initWithConversationChatter:@"8001" conversationType:eConversationTypeChat];
+    [self buildDeviceListViewController];
+    [self buildChatViewController];
     
-    self.groupListVC = chatController;
-    [self.groupListVC setTabBarItem:groupListTab];
-    [self.groupListVC setTitle:@"群组"];
-    
-    [self.tabBarController setViewControllers:@[self.deviceListVC, self.groupListVC]];
+    [self.tabBarController setViewControllers:@[self.deviceListVC, self.chatViewController]];
     [self.navigationItem setHidesBackButton:YES];
     [self.tabBarController setSelectedViewController:self.deviceListVC];
     [self.tabBarController setDelegate:self];
@@ -54,6 +55,26 @@
     self.contentViewInLandscapeOffsetCenterX = [UIScreen mainScreen].bounds.size.height / 3;
     self.contentViewInPortraitOffsetCenterX = [UIScreen mainScreen].bounds.size.width / 3;
     self.delegate = self;
+}
+
+- (void)buildDeviceListViewController {
+    UITabBarItem *deviceListTab = [[UITabBarItem alloc] initWithTitle:@"家居" image:[GraphicsAssist imageWithImageSimple:[UIImage imageNamed:@"home"] scaledToSize:CGSizeMake(32, 32)] tag:0];
+    self.deviceListVC = [DeviceListViewController buildViewController];
+    [self.deviceListVC setTabBarItem:deviceListTab];
+    [self.deviceListVC setTitle:@"家居"];
+}
+
+- (void)buildChatViewController {
+    UITabBarItem *groupListTab = [[UITabBarItem alloc] init];
+    if ([GroupListModel sharedInstance].selectedGroup) {
+        self.chatViewController = [[EaseMessageViewController alloc] initWithConversationChatter:[[GroupListModel sharedInstance].selectedGroup.identity withoutSeparator] conversationType:eConversationTypeGroupChat];
+    } else {
+        self.chatViewController = [[EaseMessageViewController alloc] init];
+    }
+    self.chatViewController.delegate = self;
+    self.chatViewController.dataSource = self;
+    [self.chatViewController setTabBarItem:groupListTab];
+    [self.chatViewController setTitle:@"互动"];
 }
 
 #pragma mark - CoordinatingControllerDelegate

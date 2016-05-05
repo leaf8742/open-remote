@@ -46,7 +46,12 @@
 /// @brief 当前用户所对应的权限
 - (AuthorizationModel *)currentAuthorization;
 
+- (AuthorizationModel *)authorizationWithUser:(UserModel *)user;
+
 /// @brief 添加设备
 - (void)insertDevie:(DeviceModel *)device;
+
+
++ (instancetype)groupWithIdentity:(NSString *)identity;
 
 @end

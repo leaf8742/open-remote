@@ -1,4 +1,5 @@
 #import "UserModel.h"
+#import "UserListModel.h"
 
 @implementation UserModel
 
@@ -24,7 +25,7 @@
                                                        }];
 }
 
-+ (UserModel *)sharedInstance {
++ (instancetype)currentUser {
     static UserModel *sharedClient = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
@@ -33,19 +34,16 @@
     return sharedClient;
 }
 
-+ (UserModel *)userWithMobile:(NSString *)mobile {
-#warning TODO
-    return nil;
++ (instancetype)userWithMobile:(NSString *)mobile {
+    return [UserListModel userWithMobile:mobile];
 }
 
-+ (UserModel *)userWithEmail:(NSString *)email {
-#warning TODO
-    return nil;
++ (instancetype)userWithEmail:(NSString *)email {
+    return [UserListModel userWithEmail:email];
 }
 
-+ (UserModel *)userWithIdentity:(NSString *)identity {
-#warning TODO
-    return nil;
++ (instancetype)userWithIdentity:(NSString *)identity {
+    return [UserListModel userWithIdentity:identity];
 }
 
 @end

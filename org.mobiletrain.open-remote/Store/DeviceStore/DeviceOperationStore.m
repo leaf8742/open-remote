@@ -7,7 +7,7 @@
 - (void)requestWithSuccess:(void (^)())success failure:(void (^)(NSError *))failure {
     NSString *boolString = self.powerOn ? @"true" : @"false";
     
-    NSDictionary *parameters = @{@"token":[UserModel sharedInstance].token,
+    NSDictionary *parameters = @{@"token":[UserModel currentUser].token,
                                  @"device_id":self.device.identity,
                                  @"device_status": [NSString stringWithFormat:@"{\"power_on\":%@}", boolString], };
     

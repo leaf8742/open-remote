@@ -16,6 +16,9 @@
         dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
         GroupListStore *groupListStore = [[GroupListStore alloc] init];
         [groupListStore requestWithSuccess:^{
+            if ([GroupListModel sharedInstance].selectedGroup == nil) {
+                [GroupListModel sharedInstance].selectedGroup = [GroupListModel groupsWithCurrentUser][0];
+            }
             dispatch_semaphore_signal(semaphore);
         } failure:^(NSError *error) {
             responseError = error;
@@ -27,7 +30,7 @@
             dispatch_semaphore_signal(semaphore);
             failure(responseError);
         } else {
-            for (GroupModel *groupItem in [GroupListModel groupsWithUser:[UserModel sharedInstance]]) {
+            for (GroupModel *groupItem in [GroupListModel groupsWithUser:[UserModel currentUser]]) {
                 dispatch_group_enter(group);
                 DeviceListStore *deviceListStore = [[DeviceListStore alloc] init];
                 deviceListStore.group = groupItem;

@@ -1,0 +1,404 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<scenario xmlns="http://www.omnigroup.com/namespace/OmniPlan/v2" xmlns:opns="http://www.omnigroup.com/namespace/OmniPlan/v2" id="nVQvL0CpwJQ">
+  <prototype-task>
+    <task id="t-2">
+      <title>&gt;任务 1</title>
+      <effort>28800</effort>
+    </task>
+  </prototype-task>
+  <prototype-task>
+    <task id="t-3">
+      <title>&gt;里程碑 1</title>
+      <type>milestone</type>
+    </task>
+  </prototype-task>
+  <prototype-task>
+    <task id="t-4">
+      <title>群组 1</title>
+      <type>group</type>
+    </task>
+  </prototype-task>
+  <prototype-resource>
+    <resource id="r-2">
+      <name>资源 1</name>
+      <type>Staff</type>
+    </resource>
+  </prototype-resource>
+  <prototype-resource>
+    <resource id="r-3">
+      <name>设备 1</name>
+      <type>Equipment</type>
+    </resource>
+  </prototype-resource>
+  <prototype-resource>
+    <resource id="r-4">
+      <name>素材 1</name>
+      <type>Material</type>
+      <units-available>0</units-available>
+      <efficiency>0</efficiency>
+    </resource>
+  </prototype-resource>
+  <prototype-resource>
+    <resource id="r-5">
+      <name>群组 1</name>
+      <type>Group</type>
+    </resource>
+  </prototype-resource>
+  <top-resource idref="r-1"/>
+  <resource id="r-1">
+    <type>Group</type>
+    <schedule>
+      <schedule-day day-of-week="sunday"/>
+      <schedule-day day-of-week="monday">
+        <time-span start-time="32400" end-time="41400"/>
+        <time-span start-time="50400" end-time="63000"/>
+        <time-span start-time="66600" end-time="75600"/>
+      </schedule-day>
+      <schedule-day day-of-week="tuesday">
+        <time-span start-time="32400" end-time="41400"/>
+        <time-span start-time="50400" end-time="63000"/>
+        <time-span start-time="66600" end-time="75600"/>
+      </schedule-day>
+      <schedule-day day-of-week="wednesday">
+        <time-span start-time="32400" end-time="41400"/>
+        <time-span start-time="50400" end-time="63000"/>
+        <time-span start-time="66600" end-time="75600"/>
+      </schedule-day>
+      <schedule-day day-of-week="thursday">
+        <time-span start-time="32400" end-time="41400"/>
+        <time-span start-time="50400" end-time="63000"/>
+        <time-span start-time="66600" end-time="75600"/>
+      </schedule-day>
+      <schedule-day day-of-week="friday">
+        <time-span start-time="32400" end-time="41400"/>
+        <time-span start-time="50400" end-time="63000"/>
+        <time-span start-time="66600" end-time="75600"/>
+      </schedule-day>
+      <schedule-day day-of-week="saturday">
+        <time-span start-time="30600" end-time="41400"/>
+        <time-span start-time="48600" end-time="63000"/>
+      </schedule-day>
+      <calendar name="Overtime" editable="yes" overtime="yes"/>
+      <calendar name="Time Off" editable="yes" overtime="no"/>
+    </schedule>
+    <child-resource idref="r1"/>
+    <child-resource idref="r2"/>
+  </resource>
+  <resource id="r1">
+    <name>学员</name>
+    <type>Staff</type>
+    <schedule>
+      <schedule-day day-of-week="monday">
+        <time-span start-time="32400" end-time="41400"/>
+        <time-span start-time="50400" end-time="63000"/>
+        <time-span start-time="66600" end-time="75600"/>
+      </schedule-day>
+      <schedule-day day-of-week="tuesday">
+        <time-span start-time="32400" end-time="41400"/>
+        <time-span start-time="50400" end-time="63000"/>
+        <time-span start-time="66600" end-time="75600"/>
+      </schedule-day>
+      <schedule-day day-of-week="wednesday">
+        <time-span start-time="32400" end-time="41400"/>
+        <time-span start-time="50400" end-time="63000"/>
+        <time-span start-time="66600" end-time="75600"/>
+      </schedule-day>
+      <schedule-day day-of-week="thursday">
+        <time-span start-time="32400" end-time="41400"/>
+        <time-span start-time="50400" end-time="63000"/>
+        <time-span start-time="66600" end-time="75600"/>
+      </schedule-day>
+      <schedule-day day-of-week="friday">
+        <time-span start-time="32400" end-time="41400"/>
+        <time-span start-time="50400" end-time="63000"/>
+        <time-span start-time="66600" end-time="75600"/>
+      </schedule-day>
+      <calendar name="Time Off" editable="yes" overtime="no"/>
+      <calendar name="Overtime" editable="yes" overtime="yes"/>
+    </schedule>
+  </resource>
+  <resource id="r2">
+    <name>讲师</name>
+    <type>Staff</type>
+  </resource>
+  <top-task idref="t-1"/>
+  <task id="t-1">
+    <type>group</type>
+    <child-task idref="t1"/>
+    <child-task idref="t3"/>
+    <child-task idref="t10"/>
+    <child-task idref="t11"/>
+    <child-task idref="t34"/>
+    <child-task idref="t18"/>
+    <child-task idref="t43"/>
+    <child-task idref="t46"/>
+    <child-task idref="t63"/>
+    <child-task idref="t64"/>
+    <child-task idref="t65"/>
+    <child-task idref="t62"/>
+    <child-task idref="t68"/>
+    <child-task idref="t71"/>
+  </task>
+  <task id="t1">
+    <title>Model层基本框架编写</title>
+    <effort>21600</effort>
+    <start-constraint-date>2000-12-31T16:00:00.000Z</start-constraint-date>
+    <start-no-earlier-than>2000-12-31T16:00:00.000Z</start-no-earlier-than>
+  </task>
+  <task id="t3">
+    <title>Model层各查询函数的编写</title>
+    <effort>9000</effort>
+    <start-constraint-date>2001-01-01T10:30:00.000Z</start-constraint-date>
+    <start-no-earlier-than>2001-01-01T10:30:00.000Z</start-no-earlier-than>
+  </task>
+  <task id="t10">
+    <title>登录、注册网络组件编、基础网络组件封装</title>
+    <effort>30600</effort>
+    <start-constraint-date>2001-01-02T01:00:00.000Z</start-constraint-date>
+    <note>
+      <text>
+        <p>
+          <run>
+            <lit>包括错误处理、</lit>
+          </run>
+          <run>
+            <lit>MD5</lit>
+          </run>
+          <run>
+            <lit>加密处理</lit>
+          </run>
+        </p>
+      </text>
+    </note>
+    <start-no-earlier-than>2001-01-02T01:00:00.000Z</start-no-earlier-than>
+  </task>
+  <task id="t11">
+    <title>其他网络组件编写</title>
+    <type>group</type>
+    <child-task idref="t21"/>
+    <child-task idref="t30"/>
+    <child-task idref="t20"/>
+    <child-task idref="t22"/>
+    <child-task idref="t23"/>
+    <child-task idref="t24"/>
+    <child-task idref="t25"/>
+    <child-task idref="t26"/>
+    <child-task idref="t27"/>
+    <child-task idref="t28"/>
+    <child-task idref="t29"/>
+    <child-task idref="t32"/>
+  </task>
+  <task id="t18">
+    <title>知识点讲解</title>
+    <effort>10800</effort>
+    <start-constraint-date>2001-01-08T01:00:00.000Z</start-constraint-date>
+    <note>
+      <text>
+        <p>
+          <run>
+            <lit>多线程</lit>
+          </run>
+        </p>
+      </text>
+    </note>
+    <start-no-earlier-than>2001-01-08T01:00:00.000Z</start-no-earlier-than>
+  </task>
+  <task id="t20">
+    <title>退出登录</title>
+    <effort>7200</effort>
+    <start-constraint-date>2001-01-03T07:30:00.000Z</start-constraint-date>
+    <start-no-earlier-than>2001-01-03T07:30:00.000Z</start-no-earlier-than>
+  </task>
+  <task id="t21">
+    <title>群组列表</title>
+    <effort>7200</effort>
+    <start-constraint-date>2001-01-03T01:00:00.000Z</start-constraint-date>
+    <start-no-earlier-than>2001-01-03T01:00:00.000Z</start-no-earlier-than>
+  </task>
+  <task id="t22">
+    <title>创建群组</title>
+    <effort>7200</effort>
+    <start-constraint-date>2001-01-03T10:30:00.000Z</start-constraint-date>
+    <start-no-earlier-than>2001-01-03T10:30:00.000Z</start-no-earlier-than>
+  </task>
+  <task id="t23">
+    <title>解散群组</title>
+    <effort>7200</effort>
+    <start-constraint-date>2001-01-03T12:30:00.000Z</start-constraint-date>
+    <start-no-earlier-than>2001-01-03T12:30:00.000Z</start-no-earlier-than>
+  </task>
+  <task id="t24">
+    <title>退出群组</title>
+    <effort>7200</effort>
+    <start-constraint-date>2001-01-04T02:30:00.000Z</start-constraint-date>
+    <start-no-earlier-than>2001-01-04T02:30:00.000Z</start-no-earlier-than>
+  </task>
+  <task id="t25">
+    <title>添加用户</title>
+    <effort>7200</effort>
+    <start-constraint-date>2001-01-04T07:30:00.000Z</start-constraint-date>
+    <start-no-earlier-than>2001-01-04T07:30:00.000Z</start-no-earlier-than>
+  </task>
+  <task id="t26">
+    <title>删除用户</title>
+    <effort>7200</effort>
+    <start-constraint-date>2001-01-04T10:30:00.000Z</start-constraint-date>
+    <start-no-earlier-than>2001-01-04T10:30:00.000Z</start-no-earlier-than>
+  </task>
+  <task id="t27">
+    <title>设备重命名</title>
+    <effort>7200</effort>
+    <start-constraint-date>2001-01-04T12:30:00.000Z</start-constraint-date>
+    <start-no-earlier-than>2001-01-04T12:30:00.000Z</start-no-earlier-than>
+  </task>
+  <task id="t28">
+    <title>设备操作</title>
+    <effort>7200</effort>
+    <start-constraint-date>2001-01-05T02:30:00.000Z</start-constraint-date>
+    <start-no-earlier-than>2001-01-05T02:30:00.000Z</start-no-earlier-than>
+  </task>
+  <task id="t29">
+    <title>添加设备</title>
+    <effort>7200</effort>
+    <start-constraint-date>2001-01-05T07:30:00.000Z</start-constraint-date>
+    <start-no-earlier-than>2001-01-05T07:30:00.000Z</start-no-earlier-than>
+  </task>
+  <task id="t30">
+    <title>设备列表</title>
+    <effort>7200</effort>
+    <start-constraint-date>2001-01-03T03:00:00.000Z</start-constraint-date>
+    <start-no-earlier-than>2001-01-03T03:00:00.000Z</start-no-earlier-than>
+  </task>
+  <task id="t32">
+    <title>删除设备</title>
+    <effort>7200</effort>
+    <start-constraint-date>2001-01-05T10:30:00.000Z</start-constraint-date>
+    <start-no-earlier-than>2001-01-05T10:30:00.000Z</start-no-earlier-than>
+  </task>
+  <task id="t34">
+    <title>周六作业</title>
+    <type>group</type>
+    <start-constraint-date>2001-01-06T00:30:00.000Z</start-constraint-date>
+    <child-task idref="t36"/>
+    <child-task idref="t37"/>
+    <start-no-earlier-than>2001-01-06T00:30:00.000Z</start-no-earlier-than>
+  </task>
+  <task id="t36">
+    <title>登录页面搭建</title>
+    <effort>12600</effort>
+  </task>
+  <task id="t37">
+    <title>注册页面搭建</title>
+    <effort>12600</effort>
+    <start-constraint-date>2001-01-06T06:00:00.000Z</start-constraint-date>
+    <start-no-earlier-than>2001-01-06T06:00:00.000Z</start-no-earlier-than>
+  </task>
+  <task id="t43">
+    <title>登录业务逻辑编写</title>
+    <effort>10800</effort>
+    <start-constraint-date>2001-01-08T06:30:00.000Z</start-constraint-date>
+    <note>
+      <text>
+        <p>
+          <run>
+            <lit>登录、群组列表、设备列表</lit>
+          </run>
+        </p>
+      </text>
+    </note>
+    <start-no-earlier-than>2001-01-08T06:30:00.000Z</start-no-earlier-than>
+  </task>
+  <task id="t46">
+    <title>主页面搭建</title>
+    <effort>12600</effort>
+    <start-constraint-date>2001-01-08T08:30:00.000Z</start-constraint-date>
+    <note>
+      <text>
+        <p>
+          <run>
+            <lit>两个</lit>
+          </run>
+          <run>
+            <lit>tab</lit>
+          </run>
+          <run>
+            <lit>页</lit>
+          </run>
+          <run>
+            <lit>(</lit>
+          </run>
+          <run>
+            <lit>家居、群组</lit>
+          </run>
+          <run>
+            <lit>)</lit>
+          </run>
+        </p>
+      </text>
+    </note>
+    <start-no-earlier-than>2001-01-08T08:30:00.000Z</start-no-earlier-than>
+  </task>
+  <task id="t62">
+    <title>设备主页、地图页面</title>
+    <effort>14400</effort>
+    <start-constraint-date>2001-01-10T07:30:00.000Z</start-constraint-date>
+    <start-no-earlier-than>2001-01-10T07:30:00.000Z</start-no-earlier-than>
+  </task>
+  <task id="t63">
+    <title>知识点讲解</title>
+    <effort>10800</effort>
+    <start-constraint-date>2001-01-09T01:00:00.000Z</start-constraint-date>
+    <note>
+      <text>
+        <p>
+          <run>
+            <lit>侧滑菜单、主页面整合</lit>
+          </run>
+        </p>
+      </text>
+    </note>
+    <start-no-earlier-than>2001-01-09T01:00:00.000Z</start-no-earlier-than>
+  </task>
+  <task id="t64">
+    <title>知识点讲解</title>
+    <effort>10800</effort>
+    <start-constraint-date>2001-01-09T06:30:00.000Z</start-constraint-date>
+    <note>
+      <text>
+        <p>
+          <run>
+            <lit>环信及</lit>
+          </run>
+          <run>
+            <lit>XMPP</lit>
+          </run>
+          <run>
+            <lit>讲解</lit>
+          </run>
+        </p>
+      </text>
+    </note>
+    <start-no-earlier-than>2001-01-09T06:30:00.000Z</start-no-earlier-than>
+  </task>
+  <task id="t65">
+    <title>页面协调者类编写</title>
+    <effort>14400</effort>
+    <start-constraint-date>2001-01-10T01:00:00.000Z</start-constraint-date>
+    <start-no-earlier-than>2001-01-10T01:00:00.000Z</start-no-earlier-than>
+  </task>
+  <task id="t68">
+    <title>聊天页面</title>
+    <effort>28800</effort>
+    <start-constraint-date>2001-01-11T01:00:00.000Z</start-constraint-date>
+    <start-no-earlier-than>2001-01-11T01:00:00.000Z</start-no-earlier-than>
+  </task>
+  <task id="t71">
+    <title>群聊功能编写</title>
+    <effort>55800</effort>
+    <start-constraint-date>2001-01-12T01:00:00.000Z</start-constraint-date>
+    <start-no-earlier-than>2001-01-12T01:00:00.000Z</start-no-earlier-than>
+  </task>
+  <critical-path root="-1" enabled="false" resources="false">
+    <color r="1" g="0.5" b="0.5"/>
+  </critical-path>
+</scenario>

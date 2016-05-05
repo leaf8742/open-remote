@@ -6,7 +6,7 @@
 
 - (void)requestWithSuccess:(void (^)())success failure:(void (^)(NSError *))failure {
     NSDictionary *parameters = @{
-                                 @"UserId":[UserModel sharedInstance].identity,
+                                 @"UserId":[UserModel currentUser].identity,
                                  @"PhoneNumber":self.mobile,
                                  @"EmailAddress":self.email,
                                  @"Alias":self.alias};
@@ -19,7 +19,7 @@
             failure(error);
         } else {
             // 服务器返回成功
-            UserModel *user = [UserModel sharedInstance];
+            UserModel *user = [UserModel currentUser];
             [user mergeFromDictionary:responseObject useKeyMapping:YES];
             success();
         }

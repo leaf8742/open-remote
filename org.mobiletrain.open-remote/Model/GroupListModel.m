@@ -27,6 +27,10 @@
     return sharedClient;
 }
 
++ (NSMutableArray *)groupsWithCurrentUser {
+    return [self groupsWithUser:[UserModel currentUser]];
+}
+
 + (NSArray *)groupsWithUser:(UserModel *)user {
 
     NSArray *result = [[GroupListModel sharedInstance].groups filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(GroupModel *evaluatedObject, NSDictionary *bindings) {

@@ -25,7 +25,7 @@
     static id result;
     result = nil;
     dispatch_sync(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        result = [self sharedInstance];
+        result = [self currentUser];
     });
     return result;
 }

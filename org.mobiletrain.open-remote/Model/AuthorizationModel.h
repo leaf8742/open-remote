@@ -15,17 +15,20 @@
  * @date 2015-10-05
  */
 typedef NS_ENUM(NSInteger, kAuthorization) {
-    /// @brief 创建用户时的群组
-    kAuthorizationPrimary,
+    /// @brief 无权限
+    kAuthorizationDenied,
     
-    /// @brief 超级管理员
-    kAuthorizationSuper,
+    /// @brief 普通用户
+    kAuthorizationMember,
     
     /// @brief 普通管理员
     kAuthorizationAdministrator,
     
-    /// @brief 普通用户
-    kAuthorizationMember,
+    /// @brief 超级管理员
+    kAuthorizationSuper,
+    
+    /// @brief 创建用户时的群组
+    kAuthorizationPrimary,
 };
 
 /**

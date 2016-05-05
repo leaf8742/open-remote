@@ -2,6 +2,7 @@
 #import "AuthorizationModel.h"
 #import "UserModel.h"
 #import "DeviceModel.h"
+#import "GroupListModel.h"
 
 @implementation GroupModel
 
@@ -26,15 +27,22 @@
 }
 
 - (AuthorizationModel *)currentAuthorization {
+    return [self authorizationWithUser:[UserModel currentUser]];
+}
+
+- (AuthorizationModel *)authorizationWithUser:(UserModel *)user {
     NSArray *filteredObjects = [self.authz filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(AuthorizationModel *evaluatedObject, NSDictionary *bindings) {
-        return [[evaluatedObject user] isEqual:[UserModel sharedInstance]];
+        return [[evaluatedObject user] isEqual:user];
     }]];
     NSAssert([filteredObjects count] <= 1, @"出现重复用户");
     
     if ([filteredObjects count]) {
         return [filteredObjects firstObject];
     } else {
-        return nil;
+        AuthorizationModel *result = [[AuthorizationModel alloc] init];
+        result.user = user;
+        [self.authz addObject:result];
+        return result;
     }
 }
 
@@ -42,6 +50,10 @@
     if (![self.devices containsObject:device]) {
         [[self mutableArrayValueForKey:@"devices"] addObject:device];
     }
+}
+
++ (instancetype)groupWithIdentity:(NSString *)identity {
+    return [GroupListModel groupWithIdentity:identity];
 }
 
 @end

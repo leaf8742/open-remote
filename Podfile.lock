@@ -1,77 +1,51 @@
 PODS:
-  - AFNetworking (2.5.4):
-    - AFNetworking/NSURLConnection (= 2.5.4)
-    - AFNetworking/NSURLSession (= 2.5.4)
-    - AFNetworking/Reachability (= 2.5.4)
-    - AFNetworking/Security (= 2.5.4)
-    - AFNetworking/Serialization (= 2.5.4)
-    - AFNetworking/UIKit (= 2.5.4)
-  - AFNetworking/NSURLConnection (2.5.4):
+  - AFNetworking (3.1.0):
+    - AFNetworking/NSURLSession (= 3.1.0)
+    - AFNetworking/Reachability (= 3.1.0)
+    - AFNetworking/Security (= 3.1.0)
+    - AFNetworking/Serialization (= 3.1.0)
+    - AFNetworking/UIKit (= 3.1.0)
+  - AFNetworking/NSURLSession (3.1.0):
     - AFNetworking/Reachability
     - AFNetworking/Security
     - AFNetworking/Serialization
-  - AFNetworking/NSURLSession (2.5.4):
-    - AFNetworking/Reachability
-    - AFNetworking/Security
-    - AFNetworking/Serialization
-  - AFNetworking/Reachability (2.5.4)
-  - AFNetworking/Security (2.5.4)
-  - AFNetworking/Serialization (2.5.4)
-  - AFNetworking/UIKit (2.5.4):
-    - AFNetworking/NSURLConnection
+  - AFNetworking/Reachability (3.1.0)
+  - AFNetworking/Security (3.1.0)
+  - AFNetworking/Serialization (3.1.0)
+  - AFNetworking/UIKit (3.1.0):
     - AFNetworking/NSURLSession
   - DACircularProgress (2.3.1)
-  - EaseMobSDK (2.1.9)
+  - EaseMobSDKFull (2.1.7)
   - EaseUI (1.0.0):
     - MJRefresh (~> 3.0.6)
     - MWPhotoBrowser (~> 2.1.1)
-  - HexColors (3.0.0)
-  - IQKeyboardManager (3.3.2)
-  - JSONModel (1.1.0)
-  - KVOController (1.0.3)
-  - MagicalRecord (2.3.0)
-  - Mantle (2.0.6):
-    - Mantle/extobjc (= 2.0.6)
-  - Mantle/extobjc (2.0.6)
+  - HexColors (4.0.0)
+  - IQKeyboardManager (4.0.2)
+  - JSONModel (1.2.0)
+  - KVOController (1.1.0)
+  - MagicalRecord (2.3.2):
+    - MagicalRecord/Core (= 2.3.2)
+  - MagicalRecord/Core (2.3.2)
+  - Mantle (2.0.7):
+    - Mantle/extobjc (= 2.0.7)
+  - Mantle/extobjc (2.0.7)
   - MBProgressHUD (0.9.2)
   - MJRefresh (3.0.8)
-  - MOBFoundation (1.3.0)
-  - MWPhotoBrowser (2.1.1):
+  - MOBFoundation (1.5.1)
+  - MWPhotoBrowser (2.1.2):
     - DACircularProgress (~> 2.3)
     - MBProgressHUD (~> 0.9)
     - SDWebImage (!= 3.7.2, ~> 3.7)
-  - pop (1.0.8)
+  - pop (1.0.9)
   - RESideMenu (4.0.7)
-  - SDWebImage (3.7.3):
-    - SDWebImage/Core (= 3.7.3)
-  - SDWebImage/Core (3.7.3)
-  - ShareSDK2 (2.12.4):
-    - ShareSDK2/Core (= 2.12.4)
-  - ShareSDK2/Connection/SinaWeibo (2.12.4):
-    - ShareSDK2/Extend/SinaWeiboSDK
-  - ShareSDK2/Connection/WeChat (2.12.4):
-    - ShareSDK2/Extend/WeChatSDK
-  - ShareSDK2/Core (2.12.4)
-  - ShareSDK2/Extend/SinaWeiboSDK (2.12.4)
-  - ShareSDK2/Extend/WeChatSDK (2.12.4)
-  - ShareSDK2/UI (2.12.4):
-    - ShareSDK2/UI/Flat (= 2.12.4)
-    - ShareSDK2/UI/iPadDefault (= 2.12.4)
-    - ShareSDK2/UI/iPadSimple (= 2.12.4)
-    - ShareSDK2/UI/iPhoneAppRecommend (= 2.12.4)
-    - ShareSDK2/UI/iPhoneDefault (= 2.12.4)
-    - ShareSDK2/UI/iPhoneSimple (= 2.12.4)
-  - ShareSDK2/UI/Flat (2.12.4)
-  - ShareSDK2/UI/iPadDefault (2.12.4)
-  - ShareSDK2/UI/iPadSimple (2.12.4)
-  - ShareSDK2/UI/iPhoneAppRecommend (2.12.4)
-  - ShareSDK2/UI/iPhoneDefault (2.12.4)
-  - ShareSDK2/UI/iPhoneSimple (2.12.4)
-  - SVProgressHUD (1.1.3)
+  - SDWebImage (3.7.5):
+    - SDWebImage/Core (= 3.7.5)
+  - SDWebImage/Core (3.7.5)
+  - SVProgressHUD (2.0.3)
 
 DEPENDENCIES:
   - AFNetworking
-  - EaseMobSDK
+  - EaseMobSDKFull
   - EaseUI (from `https://github.com/easemob/easeui-ios-cocoapods.git`)
   - HexColors
   - IQKeyboardManager
@@ -83,10 +57,6 @@ DEPENDENCIES:
   - pop
   - RESideMenu
   - SDWebImage
-  - ShareSDK2
-  - ShareSDK2/Connection/SinaWeibo
-  - ShareSDK2/Connection/WeChat
-  - ShareSDK2/UI
   - SVProgressHUD
 
 EXTERNAL SOURCES:
@@ -95,28 +65,29 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   EaseUI:
-    :commit: 1c28cffad34e5ab636670acb4102efa071319cb4
+    :commit: e44338798c02115824706370cc87958a358d7c20
     :git: https://github.com/easemob/easeui-ios-cocoapods.git
 
 SPEC CHECKSUMS:
-  AFNetworking: 05edc0ac4c4c8cf57bcf4b84be5b0744b6d8e71e
+  AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
   DACircularProgress: 4dd437c0fc3da5161cb289e07ac449493d41db71
-  EaseMobSDK: cc8415cb99a65debf4711fa2c9c349fd5c843299
+  EaseMobSDKFull: 43858ca9a62bbe1fa4c7c006f944a3e52a4bff48
   EaseUI: d62934d78e680c36d70b281ed31c9195a465a145
-  HexColors: 8b83e3fe90c0d466dae7b98c9d22da95799f99cb
-  IQKeyboardManager: d863eb0bca424d1f6dad6bdd1f856af52664add8
-  JSONModel: ec77e9865236a7a09d9cf7668df6b4b328d9ec1d
-  KVOController: 9fd8f0343670994e4b6f9f0b31f5a45663f3e1cf
-  MagicalRecord: 89eb7d7ead39fb37f01c3d010665ee94d17f8dba
-  Mantle: 299966b00759634931699f69cb6a30b9239b944d
+  HexColors: 5f95843ef89aff6a72e1fd3a8ebabf205cc43379
+  IQKeyboardManager: 2341089c4ae25fa2fa82ce356a259fcd267dc6b6
+  JSONModel: 12523685c4b623553ccf844bbbf7007624317b2c
+  KVOController: 321b5fc59300fcaabd42c0f679baa7a27efbb2fd
+  MagicalRecord: 53bed74b4323b930992a725be713e53b37d19755
+  Mantle: bc40bb061d8c2c6fb48d5083e04d928c3b7f73d9
   MBProgressHUD: 1569cf7ace17a8bac47aabfbb8580a49690386d1
   MJRefresh: fafde8f18f4afd66b434331a9beb67a6c0264056
-  MOBFoundation: 6c95e7382d534c74d4b9dc9850cf84acfe0a1f1c
-  MWPhotoBrowser: ba0d0c09ffda3a7ea10093518738c502c1c7141c
-  pop: bb773ae2c791ca2629de13b347e7a8b450fa6a57
+  MOBFoundation: 79efc94db961fe5a08cf32de69166f6a29a3b2b5
+  MWPhotoBrowser: 5836d7aa041dc05a13de380c246826578adc5ea5
+  pop: f667631a5108a2e60d9e8797c9b32ddaf2080bce
   RESideMenu: f24c508404b49c667344c54aba7e590883533958
-  SDWebImage: 1d2b1a1efda1ade1b00b6f8498865f8ddedc8a84
-  ShareSDK2: cfe71b8d026bf8f7d592396ab195937bc89bbead
-  SVProgressHUD: 748080e4f36e603f6c02aec292664239df5279c1
+  SDWebImage: 69c6303e3348fba97e03f65d65d4fbc26740f461
+  SVProgressHUD: b0830714205bea1317ea1a2ebc71e5633af334d4
 
-COCOAPODS: 0.39.0
+PODFILE CHECKSUM: 0c30b271ea0256e72621b982ce5425595497823e
+
+COCOAPODS: 1.0.0.rc.1

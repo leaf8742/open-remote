@@ -5,7 +5,7 @@
 #import "ScanViewController.h"
 #import <RESideMenu/UIViewController+RESideMenu.h>
 #import <RESideMenu/RESideMenu.h>
-#import <KVOController/FBKVOController.h>
+#import <KVOController/KVOController.h>
 #import "DeviceViewController.h"
 #import "GroupMenuViewController.h"
 #import "GroupMenuTransitionAnimator.h"
@@ -45,7 +45,6 @@
 - (void)refreshValueChanged:(UIRefreshControl *)sender {
     DeviceListLogic *logic = [[DeviceListLogic alloc] init];
     [logic operateWithSuccess:^{
-        [GroupListModel sharedInstance].selectedGroup = [[GroupListModel groupsWithUser:[UserModel sharedInstance]] firstObject];
         [self.refreshControl endRefreshing];
         [self.tableView reloadData];
     } failure:^(NSError *error) {

@@ -5,7 +5,7 @@
 @implementation ModifyDeviceNameStore
 
 - (void)requestWithSuccess:(void (^)())success failure:(void (^)(NSError *))failure {
-    NSDictionary *parameters = @{@"token":[UserModel sharedInstance].token,
+    NSDictionary *parameters = @{@"token":[UserModel currentUser].token,
                                  @"device_id":self.device.identity,
                                  @"device_title":self.name};
     
