@@ -50,9 +50,6 @@ NSLayoutConstraint
  */
 @interface CoordinatingController : NSObject
 
-/// @brief 线程池
-@property (nonatomic, retain) NSOperationQueue *operationQueue;
-
 /// @brief 提供给AppDelegate使用
 @property (readonly, nonatomic) UINavigationController *rootViewController;
 

@@ -2,7 +2,7 @@
 
 @interface CoordinatingController()<UINavigationControllerDelegate>
 
-@property (weak, nonatomic) IBOutlet UINavigationController *rootViewController;
+@property (retain, nonatomic) IBOutlet UINavigationController *rootViewController;
 
 @property (retain, nonatomic) UIViewController *activeViewController;
 
@@ -19,15 +19,6 @@
         sharedClient = [NSAllocateObject([self class], 0, NULL) init];
     });
     return sharedClient;
-}
-
-+ (id)allocWithZone:(NSZone *)zone {
-    static id result;
-    result = nil;
-    dispatch_sync(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        result = [self currentUser];
-    });
-    return result;
 }
 
 - (id)copyWithZone:(NSZone *)zone {
@@ -111,7 +102,7 @@
 
 #pragma mark - UINavigationControllerDelegate
 - (void)navigationController:(UINavigationController *)navigationController willShowViewController:(UIViewController *)viewController animated:(BOOL)animated {
-    UIBarButtonItem *backItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStyleBordered target:nil action:nil];
+    UIBarButtonItem *backItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
     [viewController.navigationItem setBackBarButtonItem:backItem];
     
     if ([viewController conformsToProtocol:@protocol(CoordinatingControllerDelegate)] && [viewController respondsToSelector:@selector(updateNavigation)]) {

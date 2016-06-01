@@ -8,6 +8,7 @@
 #import "TaskModel.h"
 #import "UserModel.h"
 #import "ModelExtras.h"
+#import "UserListModel.h"
 //#import "MessageModel.h"
 //#import "MessageListModel.h"
 

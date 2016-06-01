@@ -27,7 +27,8 @@
 }
 
 - (IBAction)powerSwitch:(UIButton *)sender {
-    [SVProgressHUD showWithMaskType:SVProgressHUDMaskTypeClear];
+    [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeClear];
+    [SVProgressHUD show];
     DeviceOperationStore *store = [[DeviceOperationStore alloc] init];
     store.powerOn = sender.selected;
     store.device = [[[GroupListModel sharedInstance] selectedGroup] selectedDevice];
@@ -69,7 +70,8 @@
     [alert addTextFieldWithConfigurationHandler:^(UITextField *textField) {
     }];
     [alert addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-        [SVProgressHUD showWithMaskType:SVProgressHUDMaskTypeClear];
+        [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeClear];
+        [SVProgressHUD show];
         NSString *name = [alert.textFields[0] text];
         ModifyDeviceNameStore *store = [[ModifyDeviceNameStore alloc] init];
         store.device = [[[GroupListModel sharedInstance] selectedGroup] selectedDevice];

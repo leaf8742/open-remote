@@ -117,7 +117,8 @@
     device.typeCode = [object[@"prod_type"] integerValue];
     device.name = object[@"prod_title"];
     
-    [SVProgressHUD showWithMaskType:SVProgressHUDMaskTypeClear];
+    [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeClear];
+    [SVProgressHUD show];
     AddDeviceStore *store = [[AddDeviceStore alloc] init];
     store.device = device;
     store.group = [GroupListModel sharedInstance].selectedGroup;

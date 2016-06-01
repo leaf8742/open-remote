@@ -34,12 +34,12 @@
 #pragma mark - UICollectionViewDataSource
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
 #warning 本机调试
-    return [[GroupListModel groupsWithUser:[UserModel currentUser]] count];
+    return [[GroupListModel groupsWithCurrentUser] count];
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     GroupMenuCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"GroupReuseIdentifier" forIndexPath:indexPath];
-    NSArray *groups = [GroupListModel groupsWithUser:[UserModel currentUser]];
+    NSArray *groups = [GroupListModel groupsWithCurrentUser];
     cell.textLabel.text = [groups[indexPath.row] name];
     cell.imageView.image = [UIImage imageNamed:@"icon"];
     return cell;

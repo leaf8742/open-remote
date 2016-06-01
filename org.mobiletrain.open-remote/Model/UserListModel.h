@@ -14,6 +14,12 @@
  */
 @interface UserListModel : NSObject
 
+/// @brief 当前用户
+@property (strong, nonatomic) UserModel *currentUser;
+
+/// @brief 单例方法
++ (instancetype)sharedInstance;
+
 /**
  * @brief 根据用户手机号码查找用户
  * @param mobile 要查找的用户手机号码

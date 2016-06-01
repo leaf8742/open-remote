@@ -13,16 +13,27 @@
     if (self.user.email && ![self.user.email isEqualToString:@""]) {
         [parameters setValue:self.user.email forKey:@"email"];
     }
+    if (self.user.identity && ![self.user.identity isEqualToString:@""]) {
+        [parameters setValue:self.user.identity forKey:@"identity"];
+    }
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     manager.requestSerializer = [AFJSONRequestSerializer serializer];
-    [manager POST:[URLString stringByAppendingString:@"user/find_user"] parameters:parameters  progress:^(NSProgress * _Nonnull uploadProgress) {
+    [manager POST:[URLString stringByAppendingString:@"user/find_user"] parameters:parameters progress:^(NSProgress * _Nonnull uploadProgress) {
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         NSError *error = [BaseStore errorWithResponseObject:responseObject];
         if (error) {
             failure(error);
         } else {
-            [self.user mergeFromDictionary:responseObject useKeyMapping:YES error:nil];
+#warning 极有可能会出错！！！
+            self.user.identity = responseObject[@"user_id"];
+            self.user.mobile = responseObject[@"user_mobile"];
+            self.user.email = responseObject[@"user_email"];
+            self.user.alias = responseObject[@"user_title"];
+            self.user.gender = responseObject[@"user_gender"];
+            self.user.token = responseObject[@"user_token"];
+            self.user.headerImage = responseObject[@"user_image"];
+
             success();
         }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {

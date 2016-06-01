@@ -71,7 +71,6 @@
 		921260C1DE4104FA367FD35690E6BA91 /* BaseStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 35607B622E906645165BFC441C8982B8 /* BaseStore.m */; };
 		931FA9FABB80C3423CD75F5B23C243B7 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE83B45241C3DF9DA4D9CFCC372DF4FA /* SystemConfiguration.framework */; };
 		9473D31A41212118BCD8B5B2F7F0B48B /* GroupLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 66DA9FA24533BA14852B1FFE6EFD93EE /* GroupLocationViewController.m */; };
-		975866A437F16164DA51249ECAE3FE5C /* GetUserInfoStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ECD08AD39D04A15C43A7FFC44227A51 /* GetUserInfoStore.m */; };
 		979FAB9998C71BDA4866666AA0C2A072 /* DeviceListLogic.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A3934AD534F483AC2A116CE49E94ABD /* DeviceListLogic.m */; };
 		9B95FE26DB644CCC7AEA3699718A37EE /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68320EEE03AD24875E221D29E50410A2 /* CoreLocation.framework */; };
 		9F9FE4AE514665F5A5368C3A865CF8EB /* EmailInputValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = 24628518FA132B3ECE412A2EE9597C78 /* EmailInputValidator.m */; };
@@ -188,10 +187,8 @@
 		787339CD5EFE4C9B6DB11E312261C251 /* Model.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Model.h; sourceTree = "<group>"; };
 		850D1B7686CA4ADEE14C9718ABF8A8EA /* DeviceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeviceViewController.h; sourceTree = "<group>"; };
 		854E99AF9548E8C71A4004583DE115FC /* TaskModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaskModel.h; sourceTree = "<group>"; };
-		854F4FA489A3A63F32D6955550B2DDBA /* GetUserInfoStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetUserInfoStore.h; sourceTree = "<group>"; };
 		89DFF65B07BB19A07FF7B4C5917E4CCE /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		8C7B9B324B6E834F8A961ED06097C66E /* BaseStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseStore.h; sourceTree = "<group>"; };
-		8ECD08AD39D04A15C43A7FFC44227A51 /* GetUserInfoStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetUserInfoStore.m; sourceTree = "<group>"; };
 		8EEC2A584D5A419755384802DFAEAFED /* TaskListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaskListViewController.h; sourceTree = "<group>"; };
 		8FB42B18B44B22F9906189CFC9A0FFF1 /* UserModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserModel.h; sourceTree = "<group>"; };
 		9033242D1DA7F50A0A072FFC86B17DC7 /* NSString+MD5HexDigest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+MD5HexDigest.m"; sourceTree = "<group>"; };
@@ -374,8 +371,6 @@
 			children = (
 				942A6606400087B67985343C6CDC6ADB /* FindUserStore.h */,
 				07AFACA2B1DF2897867995C56C0AC59A /* FindUserStore.m */,
-				854F4FA489A3A63F32D6955550B2DDBA /* GetUserInfoStore.h */,
-				8ECD08AD39D04A15C43A7FFC44227A51 /* GetUserInfoStore.m */,
 				29EE4EFD3C04C41B13D2420D56B5277F /* ModifyUserInfoStore.h */,
 				A560F043400209DDA1FB0DCB48B83935 /* ModifyUserInfoStore.m */,
 				DCEFA3506351B175C14CEC7725DF0800 /* SignInStore.h */,
@@ -935,7 +930,6 @@
 				F7FB9477A4993ECECE86154B836C76E2 /* EllipsLayer.m in Sources */,
 				9F9FE4AE514665F5A5368C3A865CF8EB /* EmailInputValidator.m in Sources */,
 				75D621F333EB7E7CD355544A73B9B49C /* FindUserStore.m in Sources */,
-				975866A437F16164DA51249ECAE3FE5C /* GetUserInfoStore.m in Sources */,
 				8F92C18C7D7BD1E2CF790C520F95E231 /* GraphicsAssist.m in Sources */,
 				FECE1E2CC59F71AB0D011BA3AFA32070 /* GroupListModel.m in Sources */,
 				C323ACC96692D8555E745B84EA9C0040 /* GroupListStore.m in Sources */,

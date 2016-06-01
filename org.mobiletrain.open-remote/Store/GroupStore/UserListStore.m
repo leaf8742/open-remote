@@ -1,6 +1,4 @@
 #import "UserListStore.h"
-#import "Model.h"
-#import <AFNetworking/AFNetworking.h>
 
 @implementation UserListStore
 
@@ -17,7 +15,12 @@
         } else {
             for (NSDictionary *userItem in responseObject[@"users"]) {
                 UserModel *user = [UserModel userWithIdentity:userItem[@"user_id"]];
-                [user mergeFromDictionary:userItem useKeyMapping:YES error:nil];
+                user.mobile = responseObject[@"user_mobile"];
+                user.email = responseObject[@"user_email"];
+                user.alias = responseObject[@"user_title"];
+                user.gender = responseObject[@"user_gender"];
+                user.token = responseObject[@"user_token"];
+                user.headerImage = responseObject[@"user_image"];
                 
                 AuthorizationModel *auth = [self.group authorizationWithUser:user];
                 auth.authorization = authorizationWithString(userItem[@"authorization"]);

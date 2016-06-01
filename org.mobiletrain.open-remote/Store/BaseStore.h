@@ -4,6 +4,9 @@
  * @date 2015-10-05
  */
 #import <Foundation/Foundation.h>
+#import <AFNetworking/AFNetworking.h>
+#import "Model.h"
+
 @class EMError;
 
 /// @brief 网络组件请求成功，但服务器返回失败

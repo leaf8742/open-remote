@@ -4,6 +4,7 @@
  * @date 2015-10-05
  */
 #import "BaseStore.h"
+#warning 备忘录模式
 
 /**
  * @class ModifyUserInfoStore

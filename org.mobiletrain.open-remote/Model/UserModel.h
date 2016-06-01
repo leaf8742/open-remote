@@ -24,12 +24,35 @@ typedef NS_ENUM(NSInteger, kGender) {
 };
 
 /**
+ * @enum kSourcePlatform
+ * @brief 用户来源平台
+ * @author 单宝华
+ * @date 2016-05-17
+ */
+typedef NS_ENUM(NSInteger, kSourcePlatform) {
+    /// @brief 智能家居平台
+    kSourcePlatformNative,
+
+    /// @brief 微博平台
+    kSourcePlatformWeibo,
+
+    /// @breif 微信
+    kSourcePlatformWechat,
+
+    /// @brief QQ
+    kSourcePlatformTencent,
+
+    /// @brief Facebook
+    kSourcePlatformFacebook
+};
+
+/**
  * @class UserModel
  * @brief 用户模型
  * @author 单宝华 
  * @date 2015-10-05
  */
-@interface UserModel : JSONModel
+@interface UserModel : NSObject
 
 /// @brief 用户手机
 @property (copy, nonatomic) NSString *mobile;
@@ -55,8 +78,8 @@ typedef NS_ENUM(NSInteger, kGender) {
 /// @brief 用户头像
 @property (copy, nonatomic) NSString *headerImage;
 
-/// @brief 用户名片二维码
-@property (copy, nonatomic) NSString *QRCode;
+/// @brief 用户来源
+@property (assign, nonatomic) kSourcePlatform sourcePlatform;
 
 /// @brief 当前用户
 + (instancetype)currentUser;

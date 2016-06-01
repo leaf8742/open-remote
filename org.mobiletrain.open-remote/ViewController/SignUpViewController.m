@@ -36,7 +36,8 @@
     if (![textField validateWithError:nil]) {
         [[IQKeyboardManager sharedManager] goNext];
     } else if (![[IQKeyboardManager sharedManager] goNext]) {
-        [SVProgressHUD showWithMaskType:SVProgressHUDMaskTypeClear];
+        [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeClear];
+        [SVProgressHUD show];
         SignUpStore *store = [[SignUpStore alloc] init];
         store.mobile = self.mobile.text;
         store.email = self.email.text;

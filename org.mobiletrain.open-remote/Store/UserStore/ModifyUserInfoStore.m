@@ -12,7 +12,8 @@
                                  @"Alias":self.alias};
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     manager.requestSerializer = [AFJSONRequestSerializer serializer];
-    [manager POST:[URLString stringByAppendingString:@"UserAction/UpdateUserInfoHandler.ashx"] parameters:parameters success:^(NSURLSessionDataTask *task, id responseObject) {
+    [manager POST:[URLString stringByAppendingString:@"UserAction/UpdateUserInfoHandler.ashx"] parameters:parameters progress:^(NSProgress * _Nonnull uploadProgress) {
+    } success:^(NSURLSessionDataTask *task, id responseObject) {
         NSError *error = [BaseStore errorWithResponseObject:responseObject];
         if (error) {
             // 服务器返回失败，将失败信息反馈给上层调用者
@@ -20,7 +21,7 @@
         } else {
             // 服务器返回成功
             UserModel *user = [UserModel currentUser];
-            [user mergeFromDictionary:responseObject useKeyMapping:YES];
+//            [user mergeFromDictionary:responseObject useKeyMapping:YES error:nil];
             success();
         }
     } failure:^(NSURLSessionDataTask *task, NSError *error) {

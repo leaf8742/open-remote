@@ -1,8 +1,4 @@
 #import "DeviceListStore.h"
-#import <AFNetworking/AFNetworking.h>
-#import "DeviceModel.h"
-#import "GroupModel.h"
-#import "UserModel.h"
 
 @implementation DeviceListStore
 
@@ -12,7 +8,8 @@
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     manager.requestSerializer = [AFJSONRequestSerializer serializer];
-    [manager POST:[URLString stringByAppendingString:@"device/device_list"] parameters:parameters success:^(NSURLSessionDataTask *task, id responseObject) {
+    [manager POST:[URLString stringByAppendingString:@"device/device_list"] parameters:parameters progress:^(NSProgress * _Nonnull uploadProgress) {
+    } success:^(NSURLSessionDataTask *task, id responseObject) {
         NSError *error = [BaseStore errorWithResponseObject:responseObject];
         if (error) {
             // 服务器返回失败，将失败信息反馈给上层调用者

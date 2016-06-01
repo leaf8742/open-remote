@@ -15,23 +15,9 @@
     }
 }
 
-+ (JSONKeyMapper*)keyMapper {
-    return [[JSONKeyMapper alloc] initWithDictionary:@{@"Data.PhoneNumber": @"mobile",
-                                                       @"Data.EmailAddress": @"email",
-                                                       @"Data.Alias": @"alias",
-                                                       @"Data.UserId":@"identity",
-                                                       @"Data.HeaderImage":@"headerImage",
-                                                       @"Data.CRCodeImage":@"QRCode"
-                                                       }];
-}
 
 + (instancetype)currentUser {
-    static UserModel *sharedClient = nil;
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        sharedClient = [[UserModel alloc] init];
-    });
-    return sharedClient;
+    return [UserListModel sharedInstance].currentUser;
 }
 
 + (instancetype)userWithMobile:(NSString *)mobile {

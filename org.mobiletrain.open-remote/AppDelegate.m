@@ -10,8 +10,6 @@
 //#import "WXApi.h"
 //#import "WeiboSDK.h"
 
-#import <AFNetworking/AFNetworking.h>
-
 @interface AppDelegate ()
 
 @end
@@ -75,10 +73,10 @@
 - (void)setupEaseSDK:(UIApplication *)application launchOptions:(NSDictionary *)launchOptions {
     [[EaseSDKHelper shareHelper] easemobApplication:application
                       didFinishLaunchingWithOptions:launchOptions
-                                             appkey:@"mobiletrain#im-remote"
+                                             appkey:@"rainbow-weaver#openremote"
                                        apnsCertName:@"aps_developer"
                                         otherConfig:@{kSDKConfigEnableConsoleLogger:[NSNumber numberWithBool:YES]}];
-    [[EaseMob sharedInstance] registerSDKWithAppKey:@"mobiletrain#im-sample" apnsCertName:@""];
+    [[EaseMob sharedInstance] registerSDKWithAppKey:@"rainbow-weaver#openremote" apnsCertName:@""];
     [[EaseMob sharedInstance] application:application didFinishLaunchingWithOptions:launchOptions];
 }
 

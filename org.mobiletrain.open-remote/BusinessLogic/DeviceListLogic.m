@@ -30,7 +30,7 @@
             dispatch_semaphore_signal(semaphore);
             failure(responseError);
         } else {
-            for (GroupModel *groupItem in [GroupListModel groupsWithUser:[UserModel currentUser]]) {
+            for (GroupModel *groupItem in [GroupListModel groupsWithCurrentUser]) {
                 dispatch_group_enter(group);
                 DeviceListStore *deviceListStore = [[DeviceListStore alloc] init];
                 deviceListStore.group = groupItem;

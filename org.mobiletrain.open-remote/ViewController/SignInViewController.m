@@ -101,7 +101,8 @@
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
     if (![[IQKeyboardManager sharedManager] goNext]) {
         [[[UIApplication sharedApplication] keyWindow] endEditing:YES];
-        [SVProgressHUD showWithMaskType:SVProgressHUDMaskTypeClear];
+        [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeClear];
+        [SVProgressHUD show];
         SignInStore *store = [[SignInStore alloc] init];
         store.account = self.account.text;
         store.passwd = self.passwd.text;
