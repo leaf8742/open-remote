@@ -17,7 +17,7 @@
             
             [[GroupListModel sharedInstance] willChangeValueForKey:@"groups"];
             // 服务器返回成功
-            for (NSDictionary *groupItem in responseObject[@"groups"]) {
+            for (NSDictionary *groupItem in [BaseStore JSONObjectWithOutNull:responseObject[@"groups"]]) {
                 GroupModel *group = [GroupListModel groupWithIdentity:groupItem[@"group_id"]];
                 group.image = groupItem[@"group_image"];
                 group.name = groupItem[@"group_title"];

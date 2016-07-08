@@ -17,10 +17,7 @@
 /// @brief 验证策略组件
 @property (retain, nonatomic) IBOutlet InputValidator *inputValidator;
 
-/// @brief 验证策略
-- (BOOL)validate;
-
-/// @brief 验证策略，但不显示alertview
+/// @brief 验证
 - (BOOL)validateWithError:(NSError **)error;
 
 /// @brief 运行时验证策略

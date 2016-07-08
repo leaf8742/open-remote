@@ -32,7 +32,7 @@ FOUNDATION_EXPORT NSString *const URLString;
 /// @return 如果有错误，创建NSError返回；如果没有错误，返回nil
 + (NSError *)errorWithResponseObject:(NSDictionary *)responseObject;
 
-+ (NSDictionary *)dictWithoutNull:(NSDictionary *)dict;
++ (id)JSONObjectWithOutNull:(id)JSONObject;
 
 + (NSError *)transformEMError:(EMError *)error;
 

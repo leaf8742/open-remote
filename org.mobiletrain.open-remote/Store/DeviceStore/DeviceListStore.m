@@ -17,7 +17,7 @@
         } else {
             // 服务器返回成功
             for (NSDictionary *deviceItem in responseObject[@"devices"]) {
-                NSDictionary *deviceItemWithoutNull = [BaseStore dictWithoutNull:deviceItem];
+                NSDictionary *deviceItemWithoutNull = [BaseStore JSONObjectWithOutNull:deviceItem];
                 NSData *jsonData = [deviceItemWithoutNull[@"prod_status"] dataUsingEncoding:NSUTF8StringEncoding];
                 NSDictionary *deviceStatus = nil;
                 if (jsonData) {

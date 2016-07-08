@@ -24,6 +24,15 @@
     self.confirm.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"确认密码" attributes:@{NSForegroundColorAttributeName:requiredColor, NSFontAttributeName:[UIFont boldSystemFontOfSize:12]}];
 }
 
+- (BOOL)allTextValidate {
+    BOOL mobileValidate = [self.mobile validateWithError:nil];
+    BOOL emailValidate = [self.email validateWithError:nil];
+    BOOL aliasValidate = [self.alias validateWithError:nil];
+    BOOL passwdValidate = [self.passwd validateWithError:nil];
+    BOOL confirmValidate = [self.confirm validateWithError:nil];
+    return mobileValidate && emailValidate && aliasValidate && passwdValidate && confirmValidate;
+}
+
 #pragma mark - CoordinatingControllerDelegate
 + (instancetype)buildViewController {
     UIStoryboard *main = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
@@ -35,7 +44,7 @@
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
     if (![textField validateWithError:nil]) {
         [[IQKeyboardManager sharedManager] goNext];
-    } else if (![[IQKeyboardManager sharedManager] goNext]) {
+    } else if (![[IQKeyboardManager sharedManager] goNext] && [self allTextValidate]) {
         [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeClear];
         [SVProgressHUD show];
         SignUpStore *store = [[SignUpStore alloc] init];

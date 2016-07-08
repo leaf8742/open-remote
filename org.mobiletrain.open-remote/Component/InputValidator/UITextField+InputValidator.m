@@ -6,24 +6,22 @@ static const void *inputValidatorKey = &inputValidatorKey;
 
 @implementation UITextField (InputValidator)
 
+- (BOOL)resignFirstResponder {
+    [self validateWithError:nil];
+    return [super resignFirstResponder];
+}
+
+- (BOOL)becomeFirstResponder {
+    self.layer.borderWidth = 0;
+    return [super becomeFirstResponder];
+}
+
 - (NSNumber *)inputValidator {
     return objc_getAssociatedObject(self, inputValidatorKey);
 }
 
 - (void)setInputValidator:(InputValidator *)inputValidator {
     objc_setAssociatedObject(self, inputValidatorKey, inputValidator, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-}
-
-- (BOOL)validate {
-    NSError *error = nil;
-    BOOL validationResult;
-    
-    if (!(validationResult = [self validateWithError:&error])) {
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:[error localizedDescription] message:[error localizedFailureReason] delegate:nil cancelButtonTitle:NSLocalizedString(@"OK", @"") otherButtonTitles:nil, nil];
-        [alertView show];
-    }
-    
-    return validationResult;
 }
 
 - (BOOL)validateWithError:(NSError **)error {
@@ -36,10 +34,12 @@ static const void *inputValidatorKey = &inputValidatorKey;
             shake.velocity = @(1500);
             shake.springBounciness = 15;
             shake.springSpeed = 20;
-            shake.dynamicsFriction = 7;
-            shake.dynamicsMass = 0.5;
+            shake.dynamicsFriction = 3.5;
+            shake.dynamicsMass = 0.25;
             [self pop_removeAllAnimations];
             [self pop_addAnimation:shake forKey:kPOPViewCenter];
+            self.layer.borderColor = [UIColor redColor].CGColor;
+            self.layer.borderWidth = 1;
         }
         
         return validationResult;
@@ -47,13 +47,14 @@ static const void *inputValidatorKey = &inputValidatorKey;
 }
 
 - (BOOL)shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
+
     NSError *error = nil;
     if (!self.inputValidator) {
         return YES;
     }
     
     BOOL validationResult = [self.inputValidator validateInput:self shouldChangeCharactersInRange:range replacementString:string error:&error];
-    
+
     return validationResult;
 }
 

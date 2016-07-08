@@ -10,6 +10,8 @@
 //#import "WXApi.h"
 //#import "WeiboSDK.h"
 
+#import <AFNetworking/AFNetworking.h>
+
 @interface AppDelegate ()
 
 @end

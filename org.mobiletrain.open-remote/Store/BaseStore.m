@@ -21,16 +21,24 @@ NSString *const URLString = @"http://112.74.198.103:8080/";
     }
 }
 
-+ (NSDictionary *)dictWithoutNull:(NSDictionary *)dict {
-    NSMutableDictionary *result = [NSMutableDictionary dictionaryWithDictionary:dict];
-    NSMutableArray *removedKeys = [NSMutableArray array];
-    for (id item in result) {
-        if ([result[item] isKindOfClass:[NSNull class]]) {
-            [removedKeys addObject:item];
++ (id)JSONObjectWithOutNull:(id)JSONObject {
+    if ([JSONObject isKindOfClass:[NSDictionary class]]) {
+        NSMutableDictionary *result = [NSMutableDictionary dictionaryWithDictionary:JSONObject];
+        NSMutableArray *removedKeys = [NSMutableArray array];
+        for (id item in result) {
+            if ([result[item] isKindOfClass:[NSNull class]]) {
+                [removedKeys addObject:item];
+            }
         }
+        [result removeObjectsForKeys:removedKeys];
+        return [result copy];
+    } else {
+        NSMutableArray *result = [NSMutableArray array];
+        for (id object in JSONObject) {
+            [result addObject:[BaseStore JSONObjectWithOutNull:object]];
+        }
+        return [result copy];
     }
-    [result removeObjectsForKeys:removedKeys];
-    return [result copy];
 }
 
 + (NSError *)transformEMError:(EMError *)emerror {
